@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+import os
+import subprocess
+import re
+import pprint
+import sys
+
+import argparse
+parser = argparse.ArgumentParser(description="SLURM extraction tool for jobs and dependencies as a simple tree")
+parser.add_argument("--user", help="specify user (default is the current one)", type=str)
+parser.add_argument("--debug", help="enable debug info", action="store_true")
+args = parser.parse_args()
+
+debug = args.debug # False
+if args.user:
+    user = args.user
+else:
+    user = os.environ["USER"]
+
+#import logging
+#import sys
+#logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+#logging.warning('A shot across the bows')
+
+# run() returns a CompletedProcess object if it was successful
+# errors in the created process are raised here too
+process = subprocess.run(['/usr/bin/squeue','-o','"%.18i %.9P %.22j %.8u %.2t %.10M %.6D %R"','-u',user], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+jobs = process.stdout
+error = process.stderr
+
+#------------------------------------------------------------------
+# 1. Build job_all dict
+#------------------------------------------------------------------
+job_all  = dict()
+
+i_line = 0
+for job in jobs.split("\n")[:-1]:
+    if i_line > 0:
+        job = job[:-1] # remove last quotes
+        job = re.sub(".*?([0-9].*)", "\g<1>", job) # strip() does not work, I do not know why
+        job_id, job_partition, job_name, job_user, job_status, job_time, job_nodes, job_reason = job.split()
+        # "tr" is needed to remove newline at the end of each line
+        job_folder = subprocess.run('scontrol show job '+job_id+ ' | grep WorkDir | rev | cut -d "/" -f1 | rev | tr -d "\n"', shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True).stdout
+        if job_reason == "(Dependency)":
+            job_to_wait = subprocess.run('scontrol show job '+job_id+' | grep Dependency | cut -d ":" -f2 | tr -d "\n"', shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True).stdout
+        else:
+            job_to_wait = None
+        job_all[job_id] = dict(job_partition=job_partition, job_name=job_name, job_user=job_user, job_status=job_status, job_time=job_time, job_nodes=job_nodes, job_reason=job_reason, job_folder=job_folder, job_to_wait=job_to_wait)
+    i_line += 1
+
+if debug:
+    print("job_all: ")
+    pprint.pprint(job_all)
+
+#------------------------------------------------------------------
+# 2. Build the tree: fathers and, then, sons
+#------------------------------------------------------------------
+job_tree = dict()
+
+import copy
+job_all_p = copy.deepcopy(job_all)
+
+for i_repeat in [0,1]: #range(len(job_all.keys())):
+    processed_jobs = list()
+    for job_id, job in job_all_p.items():
+        job_to_wait = job["job_to_wait"]
+        if job_to_wait is None:
+            if debug: print("found root (no father)")
+            processed_jobs.append(job_id)
+            job_tree[job_id] = list()
+        elif job_to_wait in job_tree.keys():
+            if debug: print("found son of root")
+            processed_jobs.append(job_id)
+            job_tree[job_to_wait].append(job_id)
+        else:
+            for j,p in job_tree.items():
+                if debug: print("job_to_wait, sons: ",job_to_wait, p)
+                if job_to_wait in p:
+                    if debug: print("found father: ",job_to_wait,"as son of root: ",j," - appending: ",job_id)
+                    job_tree[j].append(job_id)
+                    processed_jobs.append(job_id)
+    for p in processed_jobs:
+        del job_all_p[p]
+if debug:
+    print("job_tree: ")
+    pprint.pprint(job_tree)
+    print("job_all_p: ")
+    pprint.pprint(job_all_p)
+
+#------------------------------------------------------------------
+# 3. Print summary
+#------------------------------------------------------------------
+print("------------------- USER: "+user+" ## JOBS SUMMARY ## ----------------------------------------")
+for i,job_id in enumerate(job_tree):
+    job = job_all[job_id]
+    print(job_id+ " => "+job["job_name"]+ " - "+job["job_folder"]+" - ["+str(job["job_status"])+"] - "+job["job_time"])
+    if len(job_tree[job_id]) > 0: print("  |----- DEPS ("+str(len(job_tree[job_id]))+") => ", end="")
+    for job_son in job_tree[job_id]:
+        print(job_son, end=" ")
+    if len(job_tree[job_id]) > 0: print()
+    if i < len(job_tree.keys())-1: print()
+print("-------------------------------------- END SUMMARY -------------------------------------------")
