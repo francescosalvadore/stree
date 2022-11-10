@@ -1,0 +1,660 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Converting STREAmS for different purposes &#8212; STREAmS 2.0 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gallery of STREAmS results" href="gallery.html" />
+    <link rel="prev" title="Post-processing data" href="postprocessing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">STREAmS 2.0 documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="quick-start.html">
+   Compiling and running
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="flow_cases.html">
+   STREAmS flow cases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input.html">
+   Setting input file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="output.html">
+   Understading output files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="postprocessing.html">
+   Post-processing data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Converting STREAmS for different purposes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gallery.html">
+   Gallery of STREAmS results
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/manual/convert.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-structure">
+   File structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conversion-modes">
+   Conversion modes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hipfort">
+     Hipfort
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cpu">
+     CPU
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#work-flow">
+       Work flow
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ext">
+     Ext
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Work flow
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#input-file">
+       Input file
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Converting STREAmS for different purposes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-structure">
+   File structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conversion-modes">
+   Conversion modes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hipfort">
+     Hipfort
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cpu">
+     CPU
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#work-flow">
+       Work flow
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ext">
+     Ext
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Work flow
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#input-file">
+       Input file
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="converting-streams-for-different-purposes">
+<h1>Converting STREAmS for different purposes<a class="headerlink" href="#converting-streams-for-different-purposes" title="Permalink to this headline">#</a></h1>
+<p>PyconvertSTREAmS is a converter tool written in Python3 to convert the main development branch of STEAmS solver to different backends. The converter also supports the removal of
+external plugins. The converter only requires Python3 and uses native Python libraries for the implementation. To look at the default options of the converter, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py -h
+
+<span class="go">usage: pyconvertstreams.py [-h] {hip,cpu,ext} ...</span>
+
+<span class="go">PyconvertSTREAmS: STREAmS CUDA Fortran to other backends</span>
+
+<span class="go">positional arguments:</span>
+<span class="go">  {hip,cpu,ext}  Sub-commands help</span>
+<span class="go">    hip          Convert to hipfort</span>
+<span class="go">    cpu          Convert to CPU code</span>
+<span class="go">    ext          Remove added plugins</span>
+
+<span class="go">options:</span>
+<span class="go">  -h, --help     show this help message and exit</span>
+
+<span class="go">See &#39;&lt;command&gt; --help&#39; to read about a specific sub-command.</span>
+</pre></div>
+</div>
+<div class="section" id="file-structure">
+<h2>File structure<a class="headerlink" href="#file-structure" title="Permalink to this headline">#</a></h2>
+<p>Below tree represents the file organisation of the converter. pyconvertstreams.py contains the main program and utils.py has common utility functions used in the code. The other three modes are
+separated into their directories.</p>
+<div class="line-block">
+<div class="line">├── README.md</div>
+<div class="line">├── cpu</div>
+<div class="line">│   └── cpu.py</div>
+<div class="line">├── external</div>
+<div class="line">│   ├── external_libraries.py</div>
+<div class="line">│   └── external_vars_procedures.json</div>
+<div class="line">├── hipfort</div>
+<div class="line">│   ├── debug_kernels.json</div>
+<div class="line">│   ├── gpu_vars.json</div>
+<div class="line">│   ├── hipfort.py</div>
+<div class="line">│   ├── hipfort_utils.py</div>
+<div class="line">│   ├── interface_wrapper.py</div>
+<div class="line">│   ├── kernel_extract.py</div>
+<div class="line">│   └── kernels.json</div>
+<div class="line">├── pyconvertstreams.py</div>
+<div class="line">└── utils.py</div>
+</div>
+</div>
+<div class="section" id="conversion-modes">
+<h2>Conversion modes<a class="headerlink" href="#conversion-modes" title="Permalink to this headline">#</a></h2>
+<p>The converter currently supports three modes:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#hipfortl"><span class="std std-ref">Hipfort</span></a></p></li>
+<li><p><a class="reference internal" href="#cpul"><span class="std std-ref">CPU</span></a></p></li>
+<li><p><a class="reference internal" href="#extl"><span class="std std-ref">Ext</span></a></p></li>
+</ul>
+<div class="section" id="hipfort">
+<h3>Hipfort<a class="headerlink" href="#hipfort" title="Permalink to this headline">#</a></h3>
+<p id="hipfortl">This mode converts STREAmS CUDA Fortran version to Hipfort version. To look into the avilable options, run:</p>
+<p>bla bla
+bla bla</p>
+</div>
+<div class="section" id="cpu">
+<h3>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">#</a></h3>
+<p id="cpul">This mode converts STREAmS CUDA Fortran version to CPU version. To look into the avilable options, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py cpu -h
+
+<span class="go">usage: pyconvertstreams.py cpu [-h] [-i INPUT]</span>
+
+<span class="go">options:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  -i INPUT, --input INPUT</span>
+<span class="go">                        Input code folder (default: ../../code/)</span>
+</pre></div>
+</div>
+<div class="section" id="work-flow">
+<h4>Work flow<a class="headerlink" href="#work-flow" title="Permalink to this headline">#</a></h4>
+<ol class="arabic simple">
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">tools/streams-convert</span></code> directory. Always run from here.</p></li>
+<li><p>Run the code in cpu mode. Find examples <a class="reference internal" href="#cpuex"><span class="std std-ref">here</span></a>.</p></li>
+<li><p>By default, This will create the CPU code in <code class="docutils literal notranslate"><span class="pre">code/</span></code> instead <code class="docutils literal notranslate"><span class="pre">code_ext</span></code>. Read <a class="reference internal" href="#extwf"><span class="std std-ref">here</span></a> to know more about <code class="docutils literal notranslate"><span class="pre">code_ext</span></code></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this mode, both input and output path are the same locations. For example, if you want to convert the full STREAmS code (including ibm/insitu) from <code class="docutils literal notranslate"><span class="pre">code/</span></code>, you run
+this in default mode and the output will also be in <code class="docutils literal notranslate"><span class="pre">code/</span></code>.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h4>
+<ol class="arabic simple" id="cpuex">
+<li><p>To obtain STREAmS CPU version in <code class="docutils literal notranslate"><span class="pre">code/</span></code>, run:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py cpu
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>To obtain STREAmS CPU without ibm and insitu, run:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>First generate <a class="reference internal" href="#extex"><span class="std std-ref">ibm/insitu conversion</span></a></p></li>
+<li><p>After the generation of <code class="docutils literal notranslate"><span class="pre">code_ext/</span></code>, run:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py cpu -i ../../code_ext/
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="ext">
+<h3>Ext<a class="headerlink" href="#ext" title="Permalink to this headline">#</a></h3>
+<p id="extl">This mode currently supports the removal IBM, Insitu or both from the code. To look into the avilable options, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py ext -h
+
+<span class="go">usage: pyconvertstreams.py ext [-h] [-i INPUT] [-o OUTPUT] [-l] -m {ibm,insitu} [{ibm,insitu} ...]</span>
+
+<span class="go">options:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  -i INPUT, --input INPUT</span>
+<span class="go">                        Input code folder (default: ../../code/)</span>
+<span class="go">  -o OUTPUT, --output OUTPUT</span>
+<span class="go">                        Path to output converted files (default: ../../code_ext/)</span>
+<span class="go">  -l, --log             Log all the changes (default: False)</span>
+
+<span class="go">required arguments:</span>
+<span class="go">  -m {ibm,insitu} [{ibm,insitu} ...], --mode {ibm,insitu} [{ibm,insitu} ...]</span>
+<span class="go">                        Specify the plugins (default: None)</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h4>Work flow<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<ol class="arabic simple">
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">tools/streams-convert</span></code> directory. Always run from here.</p></li>
+<li><p>Prepare the input file <code class="docutils literal notranslate"><span class="pre">external/external_vars_procedures.json</span></code>. See <a class="reference internal" href="#extinp"><span class="std std-ref">here</span></a>.</p></li>
+<li><p>Run the code in ext mode. Find examples <a class="reference internal" href="#extex"><span class="std std-ref">here</span></a>.</p></li>
+<li><p>This will create a copy of <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory called the <code class="docutils literal notranslate"><span class="pre">code_ext</span></code>.</p></li>
+</ol>
+<div class="admonition note" id="extwf">
+<p class="admonition-title">Note</p>
+<p>The directory code_ext should be removed everytime you rerun the converter. This is to make sure that we get a fresh copy of the original code everytime and to avoid any overwriting.
+Eventhough there is an option to specify both input/output directory, it is recommended to use the default values.</p>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>There is an option to log the process. This will generate a log file (<code class="docutils literal notranslate"><span class="pre">streams-convert/log_external_data.json</span></code>).</p></li>
+</ol>
+</div>
+<div class="section" id="input-file">
+<h4>Input file<a class="headerlink" href="#input-file" title="Permalink to this headline">#</a></h4>
+<p id="extinp">The input values can be found in <code class="docutils literal notranslate"><span class="pre">external/external_vars_procedures.json</span></code>. Generally, the input file will remain unchanged. However, if there are any new procedure additions, the values must be
+updated here. The input file is shown below:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Input file for external conversions</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">	</span><span class="nt">&quot;singleideal&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="nt">&quot;ibm&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">        	</span><span class="nt">&quot;singleideal.F90&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">        	</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">	        	</span><span class="nt">&quot;procedures&quot;</span><span class="p">:[</span><span class="s2">&quot;ibm_initialize&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_readoff&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_alloc&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_raytracing&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_raytracing_write&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_raytracing_read&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_compute_geo&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_read_geo&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_correct_fields&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_setup_computation&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_bc_prepare&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_coeff_setup&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">	        </span><span class="nt">&quot;singleideal_gpu.F90&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">	        </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">	        	</span><span class="nt">&quot;procedures&quot;</span><span class="p">:[</span><span class="s2">&quot;ibm_apply&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_compute_force&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_alloc_gpu&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">	        </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">	        </span><span class="nt">&quot;kernels_gpu.F90&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">	        </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">	        	</span><span class="nt">&quot;procedures&quot;</span><span class="p">:[</span><span class="s2">&quot;ibm_interpolation_cuf&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_forcing_cuf&quot;</span><span class="p">,</span><span class="s2">&quot;ibm_compute_force_cuf&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">	        </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">          </span><span class="nt">&quot;skip_vars&quot;</span><span class="p">:[]</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">	    </span><span class="nt">&quot;insitu&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">        	</span><span class="nt">&quot;singleideal.F90&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">	        	</span><span class="nt">&quot;procedures&quot;</span><span class="p">:[</span><span class="s2">&quot;insitu_initialize&quot;</span><span class="p">,</span><span class="s2">&quot;insitu_finalize&quot;</span><span class="p">,</span><span class="s2">&quot;insitu_allocate&quot;</span><span class="p">,</span><span class="s2">&quot;insitu_define_limits&quot;</span><span class="p">,</span><span class="s2">&quot;time_is_freezed_fun&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">	        </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">          </span><span class="nt">&quot;singleideal_gpu.F90&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">	        	</span><span class="nt">&quot;procedures&quot;</span><span class="p">:[</span><span class="s2">&quot;insitu_alloc_gpu&quot;</span><span class="p">,</span><span class="s2">&quot;insitu_coprocess&quot;</span><span class="p">,</span><span class="s2">&quot;insitu_compute_psi&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">	        </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">          </span><span class="nt">&quot;kernels_gpu.F90&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">	        	</span><span class="nt">&quot;procedures&quot;</span><span class="p">:[</span><span class="s2">&quot;insitu_div_cuf&quot;</span><span class="p">,</span><span class="s2">&quot;insitu_omega_cuf&quot;</span><span class="p">,</span><span class="s2">&quot;insitu_ducros_cuf&quot;</span><span class="p">,</span><span class="s2">&quot;insitu_swirling_kernel&quot;</span><span class="p">,</span><span class="s2">&quot;eigs33&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">	        </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">          </span><span class="nt">&quot;skip_vars&quot;</span><span class="p">:[</span><span class="s2">&quot;time_is_freezed&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">37</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>Currently, it can handle only the <code class="docutils literal notranslate"><span class="pre">singleideal</span></code> equations which is specified in line 2. For this equation, we have two removal modes. In the first, IBM mode (line 4) is specified.
+For this, three files are required: <code class="docutils literal notranslate"><span class="pre">singleideal.F90</span></code> (line 6), <code class="docutils literal notranslate"><span class="pre">singleideal_gpu.F90</span></code> (line 10) and <code class="docutils literal notranslate"><span class="pre">kernels_gpu.F90</span></code> (line 14). For each file, we specify the corresponding <code class="docutils literal notranslate"><span class="pre">procedures</span></code>.
+This information must be updated as and when there is a change in the main branch. There is an optional fourth value, <code class="docutils literal notranslate"><span class="pre">skip_vars</span></code>. This is needed to specify if any variables should be retained
+after the conversion. This can be seen used for the insitu input where we specify <code class="docutils literal notranslate"><span class="pre">time_is_freezed</span></code> (line 34) which is required even if insitu is not enabled. Similar inputs are provided for insitu
+removal (lines 20-34).</p>
+</div>
+<div class="section" id="id2">
+<h4>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<ol class="arabic simple" id="extex">
+<li><p>To obtain STREAmS without ibm, run:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py ext -m ibm
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>To obtain STREAmS without ibm and insitu, run:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py ext -m ibm insitu
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>To obtain STREAmS without insitu and log the removal, run:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py ext -m insitu -l
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="postprocessing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Post-processing data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="gallery.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gallery of STREAmS results</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matteo Bernardini, Davide Modesti, Francesco Salvadore, Segio Pirozzoli<br/>
+  
+      &copy; Copyright 2022, Matteo Bernardini, Davide Modesti, Francesco Salvadore, Segio Pirozzoli.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,48 @@
+===================================
+Post-processing data
+===================================
+
+-------------------------------------
+Plotting 3D data
+-------------------------------------
+
+Three dimensional flow fields are stored in Plot3D and/or VTK format and can be visualized
+using Paraview, or Tecplot.
+
+-------------------------------------
+Postprocessing flow statistics
+-------------------------------------
+Mean flow statics are stored in raw format in the file `stat.bin`.
+To postprocess this, use the post-processing program available in the folder ``tools/postpro``.
+Compile the tool by typing,
+
+.. code-block:: console
+
+   $ make
+
+This will produce the executable `postpro.exe`. Copy the executable to the case folder you want to postprocess and run: 
+
+.. code-block:: console
+
+   $ ./postpro.exe
+
+This will print the post-preocessed flow statistics in the folder ``POSTPRO/``.
+Different files will be printed depending on the flow case that has been run. 
+
+&&&&&&&&&&&&&&&&
+Channel flow
+&&&&&&&&&&&&&&&&
+
+For channel flow cases the code will print ``POSTPRO/channinfo.dat`` and ``POSTPRO/channstat.prof`` 
+
+^^^^^^^^^^^^^^^^
+channinfo.dat
+^^^^^^^^^^^^^^^^
+the file ``channinfo.dat`` contains 
+
+- :math:`Re_\tau=u_\tau h/\nu_w`, Friction Reynolds number, where h is the channel half width and \nu_w the kinematic viscosity at the wall
+- :math:`\overline{\rho}_w` mean wall density
+- :math:`u_\tau/u_b`, ratio between friction and bulk flow velocity
+- :math:`C_f=2\overline{\tau}_w/(\rho_b u_b)` skin-friction coefficient based on the mean wall shear stress, bulk flow velocity and bulk fluid density
+
+
