@@ -1,396 +1,187 @@
 
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Converting STREAmS for different purposes &mdash; STREAmS 2.0 documentation</title>
+  
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Converting STREAmS for different purposes &#8212; STREAmS 2.0 documentation</title>
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Gallery of STREAmS results" href="gallery.html" />
-    <link rel="prev" title="Post-processing data" href="postprocessing.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
+    <link rel="prev" title="Post-processing data" href="postprocessing.html" /> 
+</head>
 
-    <!-- Google Analytics -->
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+<body class="wy-body-for-nav">
 
+   
+  <div class="wy-grid-for-nav">
     
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">STREAmS 2.0 documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="quick-start.html">
-   Compiling and running
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="flow_cases.html">
-   STREAmS flow cases
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="input.html">
-   Setting input file
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="output.html">
-   Understading output files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="postprocessing.html">
-   Post-processing data
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Converting STREAmS for different purposes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gallery.html">
-   Gallery of STREAmS results
-  </a>
- </li>
-</ul>
 
-    </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
+          
+            <a href="../index.html" class="icon icon-home"> STREAmS
+          
+
+          
+          </a>
+
+          
             
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
             
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
         </div>
-    </div>
-    <div id="rtd-footer-container"></div>
-</div>
 
-
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/manual/convert.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
-</div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#file-structure">
-   File structure
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conversion-modes">
-   Conversion modes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hipfort">
-     Hipfort
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cpu">
-     CPU
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#work-flow">
-       Work flow
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#examples">
-       Examples
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ext">
-     Ext
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Work flow
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#input-file">
-       Input file
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Examples
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Compiling and running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flow_cases.html">STREAmS flow cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">Setting input file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Understading output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Post-processing data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Converting STREAmS for different purposes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#file-structure">File structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conversion-modes">Conversion modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hipfort">Hipfort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpu">CPU</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#work-flow">Work flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ext">Ext</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Work flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input-file">Input file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery of STREAmS results</a></li>
 </ul>
 
+            
+          
+        </div>
+        
+      </div>
     </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Converting STREAmS for different purposes</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#file-structure">
-   File structure
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conversion-modes">
-   Conversion modes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hipfort">
-     Hipfort
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cpu">
-     CPU
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#work-flow">
-       Work flow
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#examples">
-       Examples
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ext">
-     Ext
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Work flow
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#input-file">
-       Input file
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Examples
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">STREAmS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Converting STREAmS for different purposes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/manual/convert.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
   <div class="section" id="converting-streams-for-different-purposes">
-<h1>Converting STREAmS for different purposes<a class="headerlink" href="#converting-streams-for-different-purposes" title="Permalink to this headline">#</a></h1>
+<h1>Converting STREAmS for different purposes<a class="headerlink" href="#converting-streams-for-different-purposes" title="Permalink to this headline">¶</a></h1>
 <p>PyconvertSTREAmS is a converter tool written in Python3 to convert the main development branch of STEAmS solver to different backends. The converter also supports the removal of
 external plugins. The converter only requires Python3 and uses native Python libraries for the implementation. To look at the default options of the converter, run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py -h
@@ -412,7 +203,7 @@ external plugins. The converter only requires Python3 and uses native Python lib
 </pre></div>
 </div>
 <div class="section" id="file-structure">
-<h2>File structure<a class="headerlink" href="#file-structure" title="Permalink to this headline">#</a></h2>
+<h2>File structure<a class="headerlink" href="#file-structure" title="Permalink to this headline">¶</a></h2>
 <p>Below tree represents the file organisation of the converter. pyconvertstreams.py contains the main program and utils.py has common utility functions used in the code. The other three modes are
 separated into their directories.</p>
 <div class="line-block">
@@ -435,7 +226,7 @@ separated into their directories.</p>
 </div>
 </div>
 <div class="section" id="conversion-modes">
-<h2>Conversion modes<a class="headerlink" href="#conversion-modes" title="Permalink to this headline">#</a></h2>
+<h2>Conversion modes<a class="headerlink" href="#conversion-modes" title="Permalink to this headline">¶</a></h2>
 <p>The converter currently supports three modes:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#hipfortl"><span class="std std-ref">Hipfort</span></a></p></li>
@@ -443,13 +234,13 @@ separated into their directories.</p>
 <li><p><a class="reference internal" href="#extl"><span class="std std-ref">Ext</span></a></p></li>
 </ul>
 <div class="section" id="hipfort">
-<h3>Hipfort<a class="headerlink" href="#hipfort" title="Permalink to this headline">#</a></h3>
+<h3>Hipfort<a class="headerlink" href="#hipfort" title="Permalink to this headline">¶</a></h3>
 <p id="hipfortl">This mode converts STREAmS CUDA Fortran version to Hipfort version. To look into the avilable options, run:</p>
 <p>bla bla
 bla bla</p>
 </div>
 <div class="section" id="cpu">
-<h3>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">#</a></h3>
+<h3>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
 <p id="cpul">This mode converts STREAmS CUDA Fortran version to CPU version. To look into the avilable options, run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py cpu -h
 
@@ -462,7 +253,7 @@ bla bla</p>
 </pre></div>
 </div>
 <div class="section" id="work-flow">
-<h4>Work flow<a class="headerlink" href="#work-flow" title="Permalink to this headline">#</a></h4>
+<h4>Work flow<a class="headerlink" href="#work-flow" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Go to <code class="docutils literal notranslate"><span class="pre">tools/streams-convert</span></code> directory. Always run from here.</p></li>
 <li><p>Run the code in cpu mode. Find examples <a class="reference internal" href="#cpuex"><span class="std std-ref">here</span></a>.</p></li>
@@ -475,7 +266,7 @@ this in default mode and the output will also be in <code class="docutils litera
 </div>
 </div>
 <div class="section" id="examples">
-<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h4>
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple" id="cpuex">
 <li><p>To obtain STREAmS CPU version in <code class="docutils literal notranslate"><span class="pre">code/</span></code>, run:</p></li>
 </ol>
@@ -497,7 +288,7 @@ this in default mode and the output will also be in <code class="docutils litera
 </div>
 </div>
 <div class="section" id="ext">
-<h3>Ext<a class="headerlink" href="#ext" title="Permalink to this headline">#</a></h3>
+<h3>Ext<a class="headerlink" href="#ext" title="Permalink to this headline">¶</a></h3>
 <p id="extl">This mode currently supports the removal IBM, Insitu or both from the code. To look into the avilable options, run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 pyconvertstreams.py ext -h
 
@@ -517,7 +308,7 @@ this in default mode and the output will also be in <code class="docutils litera
 </pre></div>
 </div>
 <div class="section" id="id1">
-<h4>Work flow<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Work flow<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Go to <code class="docutils literal notranslate"><span class="pre">tools/streams-convert</span></code> directory. Always run from here.</p></li>
 <li><p>Prepare the input file <code class="docutils literal notranslate"><span class="pre">external/external_vars_procedures.json</span></code>. See <a class="reference internal" href="#extinp"><span class="std std-ref">here</span></a>.</p></li>
@@ -534,11 +325,11 @@ Eventhough there is an option to specify both input/output directory, it is reco
 </ol>
 </div>
 <div class="section" id="input-file">
-<h4>Input file<a class="headerlink" href="#input-file" title="Permalink to this headline">#</a></h4>
+<h4>Input file<a class="headerlink" href="#input-file" title="Permalink to this headline">¶</a></h4>
 <p id="extinp">The input values can be found in <code class="docutils literal notranslate"><span class="pre">external/external_vars_procedures.json</span></code>. Generally, the input file will remain unchanged. However, if there are any new procedure additions, the values must be
 updated here. The input file is shown below:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">Input file for external conversions</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Input file for external conversions</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">{</span><span class="w"></span>
 <span class="linenos"> 2</span><span class="w">	</span><span class="nt">&quot;singleideal&quot;</span><span class="p">:</span><span class="w"></span>
 <span class="linenos"> 3</span><span class="w">	</span><span class="p">{</span><span class="w"></span>
@@ -586,7 +377,7 @@ after the conversion. This can be seen used for the insitu input where we specif
 removal (lines 20-34).</p>
 </div>
 <div class="section" id="id2">
-<h4>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple" id="extex">
 <li><p>To obtain STREAmS without ibm, run:</p></li>
 </ol>
@@ -611,50 +402,51 @@ removal (lines 20-34).</p>
 </div>
 
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="postprocessing.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Post-processing data</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="gallery.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Gallery of STREAmS results</p>
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="gallery.html" class="btn btn-neutral float-right" title="Gallery of STREAmS results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="postprocessing.html" class="btn btn-neutral float-left" title="Post-processing data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Matteo Bernardini, Davide Modesti, Francesco Salvadore, Segio Pirozzoli<br/>
-  
-      &copy; Copyright 2022, Matteo Bernardini, Davide Modesti, Francesco Salvadore, Segio Pirozzoli.<br/>
-</p>
-        </footer>
-    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Matteo Bernardini, Davide Modesti, Francesco Salvadore, Segio Pirozzoli.
+
+    </p>
+  </div>
     
-</div>
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-
+</footer>
+        </div>
       </div>
-    </div>
+
+    </section>
+
+  </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
 
-  </body>
+  
+  
+    
+   
+
+</body>
 </html>

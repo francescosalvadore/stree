@@ -1,392 +1,190 @@
 
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Setting input file &mdash; STREAmS 2.0 documentation</title>
+  
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Setting input file &#8212; STREAmS 2.0 documentation</title>
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Understading output files" href="output.html" />
-    <link rel="prev" title="STREAmS flow cases" href="flow_cases.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
+    <link rel="prev" title="STREAmS flow cases" href="flow_cases.html" /> 
+</head>
 
-    <!-- Google Analytics -->
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+<body class="wy-body-for-nav">
 
+   
+  <div class="wy-grid-for-nav">
     
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">STREAmS 2.0 documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="quick-start.html">
-   Compiling and running
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="flow_cases.html">
-   STREAmS flow cases
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Setting input file
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="output.html">
-   Understading output files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="postprocessing.html">
-   Post-processing data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="convert.html">
-   Converting STREAmS for different purposes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gallery.html">
-   Gallery of STREAmS results
-  </a>
- </li>
-</ul>
 
-    </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
+          
+            <a href="../index.html" class="icon icon-home"> STREAmS
+          
+
+          
+          </a>
+
+          
             
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
             
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
         </div>
-    </div>
-    <div id="rtd-footer-container"></div>
-</div>
 
-
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/manual/input.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
-</div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#file-structure-of-singleideal-ini">
-   File structure of
-   <cite>
-    singleideal.ini
-   </cite>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grid">
-     [grid]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mpi">
-     [mpi]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc">
-     [bc]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#controls">
-     [controls]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerics">
-     [numerics]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flow">
-     [flow]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fluid">
-     [fluid]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#output">
-     [output]
-    </a>
-   </li>
-  </ul>
- </li>
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Compiling and running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flow_cases.html">STREAmS flow cases</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting input file</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#file-structure-of-singleideal-ini">File structure of <cite>singleideal.ini</cite></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#grid">[grid]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mpi">[mpi]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bc">[bc]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controls">[controls]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numerics">[numerics]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flow">[flow]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fluid">[fluid]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output">[output]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">Understading output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Post-processing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Converting STREAmS for different purposes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery of STREAmS results</a></li>
 </ul>
 
+            
+          
+        </div>
+        
+      </div>
     </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Setting input file</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#file-structure-of-singleideal-ini">
-   File structure of
-   <cite>
-    singleideal.ini
-   </cite>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grid">
-     [grid]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mpi">
-     [mpi]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc">
-     [bc]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#controls">
-     [controls]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numerics">
-     [numerics]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flow">
-     [flow]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fluid">
-     [fluid]
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#output">
-     [output]
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">STREAmS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Setting input file</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/manual/input.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
   <div class="section" id="setting-input-file">
-<h1>Setting input file<a class="headerlink" href="#setting-input-file" title="Permalink to this headline">#</a></h1>
+<h1>Setting input file<a class="headerlink" href="#setting-input-file" title="Permalink to this headline">¶</a></h1>
 <p>Here we provide an explanation of the various input parameters that can be edited for a typical STREAmS run.
 All the parameters are reported in a single file, named <cite>singleideal.ini</cite>, organized in different sections and using
 the classical .ini format. Some ready-to-use input examples are provided in the folder examples.</p>
 <div class="section" id="file-structure-of-singleideal-ini">
-<h2>File structure of <cite>singleideal.ini</cite><a class="headerlink" href="#file-structure-of-singleideal-ini" title="Permalink to this headline">#</a></h2>
+<h2>File structure of <cite>singleideal.ini</cite><a class="headerlink" href="#file-structure-of-singleideal-ini" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="grid">
-<h3>[grid]<a class="headerlink" href="#grid" title="Permalink to this headline">#</a></h3>
+<h3>[grid]<a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h3>
 <p>This section allows to specify parameters to select the computational domain and its discretization.
 When the grid is directly generated in STREAmS, nodes in the x and z directions are always equally spaced.</p>
 <ul>
@@ -432,7 +230,7 @@ domain (from y = <code class="docutils literal notranslate"><span class="pre">ly
 <code class="docutils literal notranslate"><span class="pre">nymax</span></code>, <code class="docutils literal notranslate"><span class="pre">nzmax</span></code> respectively, containing one column with the node coordinates in the Cartesian directions.</p>
 </div>
 <div class="section" id="mpi">
-<h3>[mpi]<a class="headerlink" href="#mpi" title="Permalink to this headline">#</a></h3>
+<h3>[mpi]<a class="headerlink" href="#mpi" title="Permalink to this headline">¶</a></h3>
 <p>This section allows to specify parameters for the MPI decomposition.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">x_split</span></code> =&gt; integer, MPI partitions in x direction</p></li>
@@ -443,7 +241,7 @@ domain (from y = <code class="docutils literal notranslate"><span class="pre">ly
 <p>The product <code class="docutils literal notranslate"><span class="pre">x_split</span> <span class="pre">*</span> <span class="pre">y_split</span> <span class="pre">*</span> <span class="pre">z_split</span></code> must be equal to the total number of MPI tasks.</p>
 </div>
 <div class="section" id="bc">
-<h3>[bc]<a class="headerlink" href="#bc" title="Permalink to this headline">#</a></h3>
+<h3>[bc]<a class="headerlink" href="#bc" title="Permalink to this headline">¶</a></h3>
 <p>This section allows to specify flags for the imposition of boundary conditions</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">xmin</span></code>    =&gt; integer, flag for static boundary condition on side xmin</p></li>
@@ -480,7 +278,7 @@ domain (from y = <code class="docutils literal notranslate"><span class="pre">ly
 </ul>
 </div>
 <div class="section" id="controls">
-<h3>[controls]<a class="headerlink" href="#controls" title="Permalink to this headline">#</a></h3>
+<h3>[controls]<a class="headerlink" href="#controls" title="Permalink to this headline">¶</a></h3>
 <p>This section allows to specify parameters to control time integration and restart options.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">restart_type</span></code> =&gt; integer,  0-&gt; new run from scratch, 1-&gt; continue previous run, 2-&gt; continue previous run and statistics collection</p></li>
@@ -494,7 +292,7 @@ Alternatively, the time step of the simulation can be directly specified using a
 In the latter case the time step is equal to abs(<code class="docutils literal notranslate"><span class="pre">cfl</span></code>).</p>
 </div>
 <div class="section" id="numerics">
-<h3>[numerics]<a class="headerlink" href="#numerics" title="Permalink to this headline">#</a></h3>
+<h3>[numerics]<a class="headerlink" href="#numerics" title="Permalink to this headline">¶</a></h3>
 <p>This section allows to specify parameters to control the numerical method.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ep_order</span></code> =&gt; integer, order of accuracy for the discretization of convective terms</p></li>
@@ -513,7 +311,7 @@ The shock capturing flux is based on the classic WENO schemes by Ref [5]. Admiss
 corresponding to first, third, fifth and seventh order schemes, respectively.</p>
 </div>
 <div class="section" id="flow">
-<h3>[flow]<a class="headerlink" href="#flow" title="Permalink to this headline">#</a></h3>
+<h3>[flow]<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h3>
 <p>This section allows to specify parameters to control the flow configuration under investigation.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">flow_init</span></code> =&gt; integer, specify flow initialization</p>
@@ -543,7 +341,7 @@ with <code class="docutils literal notranslate"><span class="pre">Mach</span></c
 where <span class="math notranslate nohighlight">\(T_r\)</span> is the recovery temperature based on the freestream temperature <span class="math notranslate nohighlight">\(T_{\infty}\)</span> and the Mach number.</p>
 </div>
 <div class="section" id="fluid">
-<h3>[fluid]<a class="headerlink" href="#fluid" title="Permalink to this headline">#</a></h3>
+<h3>[fluid]<a class="headerlink" href="#fluid" title="Permalink to this headline">¶</a></h3>
 <p>This section allows to specify fluid properties.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">gam</span></code> =&gt; real, specific heat ratio (for calorically-perfect gases)</p></li>
@@ -572,7 +370,7 @@ where <span class="math notranslate nohighlight">\(T_r\)</span> is the recovery 
 </ul>
 </div>
 <div class="section" id="output">
-<h3>[output]<a class="headerlink" href="#output" title="Permalink to this headline">#</a></h3>
+<h3>[output]<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
 <p>This section allows to specify parameters to control the solver output.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">print_control</span></code> =&gt; integer, frequency for printing output file progress.out (number of cycles)</p></li>
@@ -592,50 +390,51 @@ where <span class="math notranslate nohighlight">\(T_r\)</span> is the recovery 
 </div>
 
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="flow_cases.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">STREAmS flow cases</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="output.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Understading output files</p>
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="output.html" class="btn btn-neutral float-right" title="Understading output files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="flow_cases.html" class="btn btn-neutral float-left" title="STREAmS flow cases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Matteo Bernardini, Davide Modesti, Francesco Salvadore, Segio Pirozzoli<br/>
-  
-      &copy; Copyright 2022, Matteo Bernardini, Davide Modesti, Francesco Salvadore, Segio Pirozzoli.<br/>
-</p>
-        </footer>
-    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Matteo Bernardini, Davide Modesti, Francesco Salvadore, Segio Pirozzoli.
+
+    </p>
+  </div>
     
-</div>
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-
+</footer>
+        </div>
       </div>
-    </div>
+
+    </section>
+
+  </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
 
-  </body>
+  
+  
+    
+   
+
+</body>
 </html>
