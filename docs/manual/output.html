@@ -209,28 +209,327 @@ The frequency with which these solutions are stored is controlled by the variabl
 <h2>Mean flow statistics<a class="headerlink" href="#mean-flow-statistics" title="Permalink to this headline">¶</a></h2>
 <p>Flow statistics are collected at runtime and stored in <cite>stat.bin</cite> and <cite>stat3d.bin</cite>.
 The file <cite>stat.bin</cite> contains statistics averaged in time and in the spanwise direction, for a total of 68 variables:</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho}\quad\quad\)</span>        21. <span class="math notranslate nohighlight">\(\overline{\nu}\quad\quad\)</span>               41. <span class="math notranslate nohighlight">\(\overline{p u}\quad\quad\)</span>               61. <span class="math notranslate nohighlight">\(\overline{pu_x}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{u}\quad\quad\)</span>           22. <span class="math notranslate nohighlight">\(\overline{\omega_x^2}\quad\quad\)</span>        42. <span class="math notranslate nohighlight">\(\overline{p v}\quad\quad\)</span>               62. <span class="math notranslate nohighlight">\(\overline{pv_y}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{v}\quad\quad\)</span>           23. <span class="math notranslate nohighlight">\(\overline{\omega_y^2}\quad\quad\)</span>        43. <span class="math notranslate nohighlight">\(\overline{\sigma_{11}}\quad\quad\)</span>       63. <span class="math notranslate nohighlight">\(\overline{pw_z}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{w}\quad\quad\)</span>           24. <span class="math notranslate nohighlight">\(\overline{\omega_z^2}\quad\quad\)</span>        44. <span class="math notranslate nohighlight">\(\overline{\sigma_{12}}\quad\quad\)</span>       64. <span class="math notranslate nohighlight">\(\overline{u_y+v_x}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{p}\quad\quad\)</span>           25. <span class="math notranslate nohighlight">\(\overline{\rho T}\quad\quad\)</span>            45. <span class="math notranslate nohighlight">\(\overline{\sigma_{13}}\quad\quad\)</span>       65. <span class="math notranslate nohighlight">\(\overline{(\boldsymbol\nabla\cdot\mathbf{U})^2}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{T}\quad\quad\)</span>           26. <span class="math notranslate nohighlight">\(\overline{\rho T^2}\quad\quad\)</span>          46. <span class="math notranslate nohighlight">\(\overline{\sigma_{22}}\quad\quad\)</span>       66. <span class="math notranslate nohighlight">\(\overline{\rho T^3}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho^2}\quad\quad\)</span>      27. <span class="math notranslate nohighlight">\(\overline{\rho^2}\quad\quad\)</span>            47. <span class="math notranslate nohighlight">\(\overline{\sigma_{23}}\quad\quad\)</span>       67. <span class="math notranslate nohighlight">\(\overline{\rho T^4}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{u^2}\quad\quad\)</span>         28. <span class="math notranslate nohighlight">\(\overline{T_0}\quad\quad\)</span>               48. <span class="math notranslate nohighlight">\(\overline{\sigma_{33}}\quad\quad\)</span>       68. <span class="math notranslate nohighlight">\(\overline{\rho u^4}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{v^2}\quad\quad\)</span>         29. <span class="math notranslate nohighlight">\(\overline{\rho T_0}\quad\quad\)</span>          49. <span class="math notranslate nohighlight">\(\overline{\sigma_{11}u}\quad\quad\)</span>      69. <span class="math notranslate nohighlight">\(\overline{C_p}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{w^2}\quad\quad\)</span>        30. <span class="math notranslate nohighlight">\(\overline{\rho u T}\quad\quad\)</span>          50. <span class="math notranslate nohighlight">\(\overline{\sigma_{12}u}\quad\quad\)</span>      70. <span class="math notranslate nohighlight">\(\overline{\gamma}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{p^2}\quad\quad\)</span>        31. <span class="math notranslate nohighlight">\(\overline{\rho v T}\quad\quad\)</span>          51. <span class="math notranslate nohighlight">\(\overline{\sigma_{21}v}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{T^2}\quad\quad\)</span>        32. <span class="math notranslate nohighlight">\(\overline{\rho w T}\quad\quad\)</span>          52. <span class="math notranslate nohighlight">\(\overline{\sigma_{22}v}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho u}\quad\quad\)</span>     33. <span class="math notranslate nohighlight">\(\overline{M}\quad\quad\)</span>                 53. <span class="math notranslate nohighlight">\(\overline{\sigma_{31}w}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho v}\quad\quad\)</span>     34. <span class="math notranslate nohighlight">\(\overline{M^2}\quad\quad\)</span>               54. <span class="math notranslate nohighlight">\(\overline{\sigma_{32}w}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho w}\quad\quad\)</span>     35. <span class="math notranslate nohighlight">\(\overline{\rho u^3}\quad\quad\)</span>          55. <span class="math notranslate nohighlight">\(\overline{\sigma_{11}v+\sigma_{21}u}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho u^2}\quad\quad\)</span>   36. <span class="math notranslate nohighlight">\(\overline{\rho v u^2}\quad\quad\)</span>        56. <span class="math notranslate nohighlight">\(\overline{\sigma_{12}v+\sigma_{22}u}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho v^2}\quad\quad\)</span>   37. <span class="math notranslate nohighlight">\(\overline{\rho u v^2}\quad\quad\)</span>        57. <span class="math notranslate nohighlight">\(\overline{\sigma_{11}u_x+\sigma_{12}u_y + \sigma_{13}u_z}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho w^2}\quad\quad\)</span>   38. <span class="math notranslate nohighlight">\(\overline{\rho v^3}\quad\quad\)</span>          58. <span class="math notranslate nohighlight">\(\overline{\sigma_{21}v_x+\sigma_{22}v_y + \sigma_{23}v_z}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\rho uv}\quad\quad\)</span>    39. <span class="math notranslate nohighlight">\(\overline{\rho u w^2}\quad\quad\)</span>        59. <span class="math notranslate nohighlight">\(\overline{\sigma_{31}w_x+\sigma_{32}w_y + \sigma_{33}w_z}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\overline{\mu}\quad\quad\)</span>        40. <span class="math notranslate nohighlight">\(\overline{\rho v w^2}\quad\quad\)</span>        60. <span class="math notranslate nohighlight">\(\overline{\sigma_{31}v_x+\sigma_{12}(u_x+v_y) + \sigma_{22}u_y+\sigma_{13}v_z+\sigma_{23}u_z}\)</span></p></li>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Mean flow statistics</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho}\quad\quad\)</span></p></li>
 </ol>
+</td>
+<td><ol class="arabic simple" start="21">
+<li><p><span class="math notranslate nohighlight">\(\overline{\nu}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="41">
+<li><p><span class="math notranslate nohighlight">\(\overline{p u}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="61">
+<li><p><span class="math notranslate nohighlight">\(\overline{pu_x}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="2">
+<li><p><span class="math notranslate nohighlight">\(\overline{u}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="22">
+<li><p><span class="math notranslate nohighlight">\(\overline{\omega_x^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="42">
+<li><p><span class="math notranslate nohighlight">\(\overline{p v}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="62">
+<li><p><span class="math notranslate nohighlight">\(\overline{pv_y}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="3">
+<li><p><span class="math notranslate nohighlight">\(\overline{v}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="23">
+<li><p><span class="math notranslate nohighlight">\(\overline{\omega_y^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="43">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{11}}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="63">
+<li><p><span class="math notranslate nohighlight">\(\overline{pw_z}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="4">
+<li><p><span class="math notranslate nohighlight">\(\overline{w}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="24">
+<li><p><span class="math notranslate nohighlight">\(\overline{\omega_z^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="44">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{12}}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="64">
+<li><p><span class="math notranslate nohighlight">\(\overline{u_y+v_x}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="5">
+<li><p><span class="math notranslate nohighlight">\(\overline{p}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="25">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho T}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="45">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{13}}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="65">
+<li><p><span class="math notranslate nohighlight">\(\overline{(\boldsymbol\nabla\cdot\mathbf{U})^2}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="6">
+<li><p><span class="math notranslate nohighlight">\(\overline{T}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="26">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho T^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="46">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{22}}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="66">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho T^3}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="7">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="27">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="47">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{23}}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="67">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho T^4}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="8">
+<li><p><span class="math notranslate nohighlight">\(\overline{u^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="28">
+<li><p><span class="math notranslate nohighlight">\(\overline{T_0}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="48">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{33}}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="68">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho u^4}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="9">
+<li><p><span class="math notranslate nohighlight">\(\overline{v^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="29">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho T_0}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="49">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{11}u}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="69">
+<li><p><span class="math notranslate nohighlight">\(\overline{C_p}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="10">
+<li><p><span class="math notranslate nohighlight">\(\overline{w^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="30">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho u T}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="50">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{12}u}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="70">
+<li><p><span class="math notranslate nohighlight">\(\overline{\gamma}\)</span></p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="11">
+<li><p><span class="math notranslate nohighlight">\(\overline{p^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="31">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho v T}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="51">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{21}v}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="12">
+<li><p><span class="math notranslate nohighlight">\(\overline{T^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="32">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho w T}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="52">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{22}v}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="13">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho u}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="33">
+<li><p><span class="math notranslate nohighlight">\(\overline{M}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="53">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{31}w}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="14">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho v}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="34">
+<li><p><span class="math notranslate nohighlight">\(\overline{M^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="54">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{32}w}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="15">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho w}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="35">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho u^3}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="55">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{11}v+\sigma_{21}u}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="16">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho u^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="36">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho v u^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="56">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{12}v+\sigma_{22}u}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="17">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho v^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="37">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho u v^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="57">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{11}u_x+\sigma_{12}u_y + \sigma_{13}u_z}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="18">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho w^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="38">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho v^3}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="58">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{21}v_x+\sigma_{22}v_y + \sigma_{23}v_z}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="19">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho uv}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="39">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho u w^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="59">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{31}w_x+\sigma_{32}w_y + \sigma_{33}w_z}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="20">
+<li><p><span class="math notranslate nohighlight">\(\overline{\mu}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="40">
+<li><p><span class="math notranslate nohighlight">\(\overline{\rho v w^2}\quad\quad\)</span></p></li>
+</ol>
+</td>
+<td><ol class="arabic simple" start="60">
+<li><p><span class="math notranslate nohighlight">\(\overline{\sigma_{31}v_x+\sigma_{12}(u_x+v_y) + \sigma_{22}u_y+\sigma_{13}v_z+\sigma_{23}u_z}\)</span></p></li>
+</ol>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>The symbol <span class="math notranslate nohighlight">\(\overline{(\cdot)}\)</span> indicates averaging in time and spanwise direction.</p>
 <p>The file stat3d.bin contains 3D flow statistics averaged in time, for a total of 14 variables:</p>
 <ol class="arabic simple">
