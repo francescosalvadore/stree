@@ -91,6 +91,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quick-start.html">Compiling and running</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">STREAmS flow cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nondimensional-governing-equations">Nondimensional governing equations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#compressible-plane-channel-flow">Compressible plane channel flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#compressible-boundary-layer">Compressible boundary layer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#shock-wave-boundary-layer-interaction">Shock wave/boundary layer interaction</a></li>
@@ -182,7 +183,118 @@ types of canonical compressible flow configurations:</p>
 spanwise coordinate.
 The dimensions of the computational domain in the corresponding directions
 are <span class="math notranslate nohighlight">\(L_x\)</span>, <span class="math notranslate nohighlight">\(L_y\)</span>, and <span class="math notranslate nohighlight">\(L_z\)</span>.</p>
-<p>The main parameters of each case are reported in the following.</p>
+<div class="section" id="nondimensional-governing-equations">
+<h2>Nondimensional governing equations<a class="headerlink" href="#nondimensional-governing-equations" title="Permalink to this headline">¶</a></h2>
+<p>STREAmS solves the fully compressible Navier–Stokes equations
+for a calorically or thermally perfect, heat-conducting gas.
+The governing equations in dimensional form, adopting
+the Einsten summation notation, are thus:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho^*}{\partial t^*} + \frac{\partial \rho^* u_i^*}{\partial x_i^*}  = 0\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho^* u_i^*}{\partial t^*} + \frac{\partial \rho^* u_i^*}{\partial x_j^*} = -\frac{\partial p^*}{\partial x_i^*} + \frac{\partial \sigma_{ij}^*}{\partial x_j^*}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho^* E^*}{\partial t^*} + \frac{\partial \rho^* u_j^* H^*}{\partial x_j^*} = - \frac{\partial q_j^*}{\partial x_j^*} + \frac{\sigma_{ij}^* u_i^*}{\partial x_j^*}\]</div>
+<div class="math notranslate nohighlight">
+\[p^* = \rho^* R^* T^*\]</div>
+<p>where we indicate dimensional quantities with the asterisk symbol.
+In particular, <span class="math notranslate nohighlight">\(\rho^*\)</span> is the density,
+<span class="math notranslate nohighlight">\(u_i^*\)</span> are the velocity components in the three coordinate directions,
+<span class="math notranslate nohighlight">\(p^*\)</span> is the pressure,
+<span class="math notranslate nohighlight">\(\sigma^*_{ij}\)</span> is the viscous stress tensor,
+<span class="math notranslate nohighlight">\(E^*\)</span> is the total specific energy defined
+as <span class="math notranslate nohighlight">\(E^* = e^* + u_i^* u_i^*/2\)</span>,
+<span class="math notranslate nohighlight">\(H^*\)</span> is the total specific enthalpy, defined
+as <span class="math notranslate nohighlight">\(H^* = E^* + p^*/\rho^*\)</span>,
+and <span class="math notranslate nohighlight">\(R^*\)</span> is the gas constant.</p>
+<p>For the general case of a thermally perfect gas, the specific internal energy
+and enthalpy are defined respectively as</p>
+<div class="math notranslate nohighlight">
+\[e^* = \int_{T_R^*}^{T^*} C_v^*(T^*)\,\mathrm{d} T^* \quad \mathrm{and} \quad
+h^* = \int_{T_R^*}^{T^*} C_p^*(T^*)\,\mathrm{d} T^* \, .\]</div>
+<p>where <span class="math notranslate nohighlight">\(T_R^*\)</span> is the reference temperature, and
+<span class="math notranslate nohighlight">\(C_p\)</span> and <span class="math notranslate nohighlight">\(C_v\)</span> are respectively the specific heat capacity
+at constant pressure and volume, which are assumed in general as functions
+of the temperature.</p>
+<p>The constitutive equations defining the viscous stress tensor and
+the heat flux vector are:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{ij}^* = \mu^* \left( \frac{\partial u_i^*}{\partial x_j^*}
+                           + \frac{\partial u_j^*}{\partial x_i^*}
+               - \frac{2}{3} \frac{\partial u_k^*}{\partial x_k^*}
+                                                       \delta_{ij} \right)\]</div>
+<div class="math notranslate nohighlight">
+\[q_j^* = - k^* \frac{\partial T^*}{\partial x^*_j} = - \frac{\mu^* C_p^*}{Pr} \frac{\partial T^*}{\partial x^*_j}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu^*\)</span> is the dynamic viscosity, evaluated as a
+function of the temperature, and <span class="math notranslate nohighlight">\(k^*\)</span> is the thermal
+conductivity, expressed in terms of the Prandtl number <span class="math notranslate nohighlight">\(Pr\)</span>
+as <span class="math notranslate nohighlight">\(k^* = \mu^* C_p^*/Pr\)</span>.</p>
+<p>For the viscosity-temperature relationship, two options are available:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mu^* = \mu^*(T_R^*) f(T^*/T^*_R) = \mu^*(T_R^*) \cdot
+\begin{cases}
+\left(\frac{T^*}{T_R^*}\right)^\alpha &amp; \mathrm{Power\,law}\\
+\frac{T^*}{T_R^*} \frac{1 + S^*/T_R^*}{T^*/T_R^* + S^*/T_R^*} &amp; \mathrm{Sutherland's\,law}\\\,
+\end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(S^*\)</span> are coefficients that depend on the fluid.</p>
+<p>In order to obtain the nondimensional form of the governing equations,
+we define the following reference quantities. The specific choice assumed
+makes it possible to use nondimensional variables, while retaining
+– almost – the same form that the governing equations have when using
+dimensional variables.</p>
+<p>In particular, we assume that density, temperature, and lengths are
+made nondimensional as:</p>
+<div class="math notranslate nohighlight">
+\[\rho = \frac{\rho^*}{\rho^*_R}, \quad T = \frac{T^*}{T^*_R}, \quad x_i = \frac{x^*_i}{L_R^*}\]</div>
+<p>From the reference values chosen above, it follows that:</p>
+<div class="math notranslate nohighlight">
+\[p_R^* = \rho_R^* R^* T^*_R \quad \mathrm{and} \quad U_R^* = \sqrt{R^* T^*_R}\,.\]</div>
+<p>implying that <span class="math notranslate nohighlight">\(p = p^*/P^*_R\)</span>, and <span class="math notranslate nohighlight">\(u_i = u_i^*/U_R^*\)</span>.</p>
+<p>Note that the reference velocity is equal to the speed of sound evaluated at the reference temperature, except for the factor <span class="math notranslate nohighlight">\(\sqrt{\gamma}\)</span>.</p>
+<p>The nondimensional time is <span class="math notranslate nohighlight">\(t = t^*/t^*_R\)</span>, where the
+reference time is assumed to be equal to:</p>
+<div class="math notranslate nohighlight">
+\[t_R^* = \frac{L_R^*}{U_R^*}\,.\]</div>
+<p>Specific heat capacities are instead made nondimensional as:</p>
+<div class="math notranslate nohighlight">
+\[C_p = \frac{C_p^*}{R^*} \quad \mathrm{and} \quad C_v = \frac{C_v^*}{R^*}\,.\]</div>
+<p>Finally, a reference dynamic viscosity is defined, to help make
+nondimensional the viscous stress tensor and the heat flux vector, such that:</p>
+<div class="math notranslate nohighlight">
+\[\mu_R^* = \rho_R^* U_R^* L_R^* \quad \Rightarrow \quad \mu = \frac{\mu^*}{\mu^*_R}\]</div>
+<p>By substituting the above expressions in the governing equations,
+it is possible to obtain the following nondimensional form:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho}{\partial t} + \frac{\partial \rho u_i}{\partial x_i}  = 0\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho u_i}{\partial t} + \frac{\partial \rho u_i}{\partial x_j} = -\frac{\partial p}{\partial x_i} + \frac{\partial \sigma_{ij}}{\partial x_j}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \rho E}{\partial t} + \frac{\partial \rho u_j H}{\partial x_j} = - \frac{\partial q_j}{\partial x_j} + \frac{\sigma_{ij} u_i}{\partial x_j}\]</div>
+<div class="math notranslate nohighlight">
+\[p = \rho T\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{ij} = \mu \left( \frac{\partial u_i}{\partial x_j}
+                       + \frac{\partial u_j}{\partial x_i}
+           - \frac{2}{3} \frac{\partial u_k}{\partial x_k}
+                                               \delta_{ij} \right)\]</div>
+<div class="math notranslate nohighlight">
+\[q_j = - \frac{\mu C_p}{Pr} \frac{\partial T}{\partial x_j}\,\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[e = \int_{1}^{T} C_v(T)\,\mathrm{d} T \quad \mathrm{and} \quad
+h = \int_{1}^{T} C_p(T)\,\mathrm{d} T \, .\]</div>
+<p>We stress that the reference dynamic viscosity does <strong>not</strong> coincide with
+the dynamic viscosity at the reference temperature. In particular,
+one has that:</p>
+<div class="math notranslate nohighlight">
+\[\mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T_R^*)}{\mu^*_R} f(T) = \mu_{T_R} f(T)\,.\]</div>
+<p>This quantity is evaluated as a function of the nondimensional flow parameters provided by the user in the input (Mach number, Reynolds number, Eckert number),
+whose specific meaning for various flow cases implemented in STREAmS is presented
+below.</p>
+<p>The main parameters of each case are reported in the following.
+ASTERISCHI!!!</p>
+</div>
 <div class="section" id="compressible-plane-channel-flow">
 <h2>Compressible plane channel flow<a class="headerlink" href="#compressible-plane-channel-flow" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/Channel_case.png"><img alt="../_images/Channel_case.png" src="../_images/Channel_case.png" style="width: 600px;" /></a>
@@ -266,9 +378,9 @@ and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.<
 <p>where <span class="math notranslate nohighlight">\(u_\tau\)</span> is the friction velocity,
 <span class="math notranslate nohighlight">\(\nu_w\)</span> is the kinematic viscosity at the wall,
 <span class="math notranslate nohighlight">\(\mu(T)\)</span> is the dynamic viscosity at temperature <span class="math notranslate nohighlight">\(T\)</span>,
-and <span class="math notranslate nohighlight">\(\gamma = C_P/C_V\)</span> is the heat capacity ratio,
-obtained dividing the specific heat capacity at constant pressure <span class="math notranslate nohighlight">\(C_P\)</span>
-by the specific heat capacity at constant volume <span class="math notranslate nohighlight">\(C_V\)</span>.</p>
+and <span class="math notranslate nohighlight">\(\gamma = C_p/C_v\)</span> is the heat capacity ratio,
+obtained dividing the specific heat capacity at constant pressure <span class="math notranslate nohighlight">\(C_p\)</span>
+by the specific heat capacity at constant volume <span class="math notranslate nohighlight">\(C_v\)</span>.</p>
 <p>For what concerns the bulk temperature, two different options are available for the simulations:</p>
 <p>– <em>Fixed bulk temperature.</em> In this case, the user must supply the code
 with the desired values of <span class="math notranslate nohighlight">\(M_B\)</span>, <span class="math notranslate nohighlight">\(Re_\tau\)</span>, and an
@@ -281,6 +393,13 @@ code with the desired values of <span class="math notranslate nohighlight">\(\wi
 a value less than <span class="math notranslate nohighlight">\(-1\)</span>.
 The code provides the value of <span class="math notranslate nohighlight">\(\widetilde{Re}_B\)</span>, and
 an estimate of <span class="math notranslate nohighlight">\(M_B\)</span> and <span class="math notranslate nohighlight">\(Re_B\)</span>. CITA ROUGHNESS JFM</p>
+<p>In the case of the compressible plane channel flow,
+the reference temperature <span class="math notranslate nohighlight">\(T_R^*\)</span>
+is assumed to be the wall temperature <span class="math notranslate nohighlight">\(T_w^*\)</span>,
+and thus by considering the definition of the reference
+dynamic viscosity, one has that:</p>
+<div class="math notranslate nohighlight">
+\[\mu_{T_R} = \frac{\mu^*(T_w^*)}{\mu_R^*} = \frac{\mu^*(T_w^*)}{\rho_B^* U_B^* h^*} \frac{\rho_B^* U_B^* h^*}{\rho_R^* U_R^* L_R^*} = \sqrt{\gamma(T_w)} \frac{\widetilde{M}_B}{\widetilde{Re}_B}\,.\]</div>
 </div>
 <div class="section" id="compressible-boundary-layer">
 <h2>Compressible boundary layer<a class="headerlink" href="#compressible-boundary-layer" title="Permalink to this headline">¶</a></h2>
@@ -330,6 +449,13 @@ the free-stream temperature.</p>
 <div class="math notranslate nohighlight">
 \[M_\infty = \frac{U_\infty}{\sqrt{\gamma\,R\,T_\infty}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(U_\infty\)</span> is the free-stream velocity.</p>
+<p>In the case of the compressible boundary layer,
+the reference temperature <span class="math notranslate nohighlight">\(T_R^*\)</span>
+is assumed to be the free-stream temperature <span class="math notranslate nohighlight">\(T_\infty^*\)</span>,
+and thus by considering the definition of the reference
+dynamic viscosity, one has that:</p>
+<div class="math notranslate nohighlight">
+\[\mu_{T_R} = \frac{\mu^*(T_\infty^*)}{\mu_R^*} = \frac{\mu^*(T_\infty^*)}{\rho_\infty^* U_\infty^* \delta^*} \frac{\rho_\infty^* U_\infty^* \delta^*}{\rho_R^* U_R^* L_R^*} = \sqrt{\gamma(T_\infty)} \frac{M_\infty}{Re_\infty}\,.\]</div>
 </div>
 <div class="section" id="shock-wave-boundary-layer-interaction">
 <h2>Shock wave/boundary layer interaction<a class="headerlink" href="#shock-wave-boundary-layer-interaction" title="Permalink to this headline">¶</a></h2>

@@ -56,8 +56,8 @@ The file `stat.bin` contains statistics averaged in time and in the spanwise dir
 6. :math:`\overline{T}\quad\quad`           26. :math:`\overline{\rho T^2}\quad\quad`          46. :math:`\overline{\sigma_{22}}\quad\quad`       66. :math:`\overline{\rho T^3}` 
 7. :math:`\overline{\rho^2}\quad\quad`      27. :math:`\overline{\rho^2}\quad\quad`            47. :math:`\overline{\sigma_{23}}\quad\quad`       67. :math:`\overline{\rho T^4}`
 8. :math:`\overline{u^2}\quad\quad`         28. :math:`\overline{T_0}\quad\quad`               48. :math:`\overline{\sigma_{33}}\quad\quad`       68. :math:`\overline{\rho u^4}`
-9. :math:`\overline{v^2}\quad\quad`         29. :math:`\overline{\rho T_0}\quad\quad`          49. :math:`\overline{\sigma_{11}u}`         
-10. :math:`\overline{w^2}\quad\quad`        30. :math:`\overline{\rho u T}\quad\quad`          50. :math:`\overline{\sigma_{12}u}`                    
+9. :math:`\overline{v^2}\quad\quad`         29. :math:`\overline{\rho T_0}\quad\quad`          49. :math:`\overline{\sigma_{11}u}\quad\quad`      69. :math:`\overline{C_p}` 
+10. :math:`\overline{w^2}\quad\quad`        30. :math:`\overline{\rho u T}\quad\quad`          50. :math:`\overline{\sigma_{12}u}\quad\quad`      70. :math:`\overline{\gamma}`
 11. :math:`\overline{p^2}\quad\quad`        31. :math:`\overline{\rho v T}\quad\quad`          51. :math:`\overline{\sigma_{21}v}`               
 12. :math:`\overline{T^2}\quad\quad`        32. :math:`\overline{\rho w T}\quad\quad`          52. :math:`\overline{\sigma_{22}v}`                 
 13. :math:`\overline{\rho u}\quad\quad`     33. :math:`\overline{M}\quad\quad`                 53. :math:`\overline{\sigma_{31}w}`                     
@@ -113,6 +113,6 @@ For boundary layer flow cases it contains the following quantities:
 - step number
 - time step
 - time
-- residual of :math: \rho u
+- residual of :math:`\rho u`
 
 The same variables printed in `progress.out` are also printed on screen while the solver is running.
