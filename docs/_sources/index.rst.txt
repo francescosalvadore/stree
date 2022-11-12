@@ -15,7 +15,7 @@ Welcome to STREAmS-2 documentation!
 
    manual/quick-start
    manual/flow_cases
-   manual/adimfra
+   manual/equations
    manual/input
    manual/output
    manual/postprocessing
