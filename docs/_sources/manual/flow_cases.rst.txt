@@ -60,7 +60,7 @@ and enthalpy are defined respectively as
    h^* = \int_{T_R^*}^{T^*} C_p^*(T^*)\,\mathrm{d} T^* \, .
 
 where :math:`T_R^*` is the reference temperature, and 
-:math:`C_p` and :math:`C_v` are respectively the specific heat capacity 
+:math:`C_p^*` and :math:`C_v^*` are respectively the specific heat capacity 
 at constant pressure and volume, which are assumed in general as functions 
 of the temperature. 
 
@@ -87,7 +87,7 @@ For the viscosity-temperature relationship, two options are available:
 
 .. math::
 
-   \mu^* = \mu^*(T_R^*) f(T^*/T^*_R) = \mu^*(T_R^*) \cdot 
+   \mu^* = \mu^*(T_R^*) f(\frac{T^*}/{T^*_R}) = \mu^*(T_R^*) \cdot 
    \begin{cases}
    \left(\frac{T^*}{T_R^*}\right)^\alpha & \mathrm{Power\,law}\\
    \frac{T^*}{T_R^*} \frac{1 + S^*/T_R^*}{T^*/T_R^* + S^*/T_R^*} & \mathrm{Sutherland's\,law}\\\,
@@ -96,13 +96,14 @@ For the viscosity-temperature relationship, two options are available:
 where :math:`\alpha` and :math:`S^*` are coefficients that depend on the fluid.
 
 In order to obtain the nondimensional form of the governing equations, 
-we define the following reference quantities. The specific choice assumed 
+we define the following reference quantities. The specific choice here assumed 
 makes it possible to use nondimensional variables, while retaining 
 -- almost -- the same form that the governing equations have when using 
 dimensional variables. 
 
-In particular, we assume that density, temperature, and lengths are  
-made nondimensional as:
+We start by assuming four "primary" reference values, namely the specifc gas constant :math:`R^*`,
+a reference density :math:`\rho_R`, temperature :math:`T_R` and length :math:`L_R`.
+Consequenly, density, temperature, and lengths are  made nondimensional as:
 
 .. math::
 
@@ -114,9 +115,10 @@ From the reference values chosen above, it follows that:
 
    p_R^* = \rho_R^* R^* T^*_R \quad \mathrm{and} \quad U_R^* = \sqrt{R^* T^*_R}\,.
 
-implying that :math:`p = p^*/P^*_R`, and :math:`u_i = u_i^*/U_R^*`.
+implying that :math:`p = p^*/p^*_R`, and :math:`u_i = u_i^*/U_R^*`.
 
-Note that the reference velocity is equal to the speed of sound evaluated at the reference temperature, except for the factor :math:`\sqrt{\gamma}`.
+Note that the reference velocity :math:`U_R^*` is equal to the speed of sound evaluated
+at the reference temperature, except for the factor :math:`\sqrt{\gamma}`.
 
 The nondimensional time is :math:`t = t^*/t^*_R`, where the 
 reference time is assumed to be equal to:
@@ -177,20 +179,19 @@ and
    e = \int_{1}^{T} C_v(T)\,\mathrm{d} T \quad \mathrm{and} \quad 
    h = \int_{1}^{T} C_p(T)\,\mathrm{d} T \, .
 
-We stress that the reference dynamic viscosity does **not** coincide with 
-the dynamic viscosity at the reference temperature. In particular, 
-one has that: 
+The nondimensional version of the viscosity-temperature relationship becomes
 
 .. math::
 
-   \mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T_R^*)}{\mu^*_R} f(T) = \mu_{T_R} f(T)\,.
+   \mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T_R^*)}{\mu^*_R} f(\frac{T^*}{T^*_R}) = \mu_{T_R} f(T)\,.
 
-This quantity is evaluated as a function of the nondimensional flow parameters provided by the user in the input (Mach number, Reynolds number, Eckert number), 
-whose specific meaning for various flow cases implemented in STREAmS is presented 
-below.
+We stress that the reference dynamic viscosity :math:`\mu_R^*` does **not** coincide with 
+the dynamic viscosity at the reference temperature :math:`\mu^*(T_R^*)`. Their ratio
+is a function of the nondimensional flow parameters provided by the user in the input
+(Mach number, Reynolds number, Eckert number), whose specific meaning for various flow cases
+implemented in STREAmS is presented below.
 
-The main parameters of each case are reported in the following. 
-ASTERISCHI!!!
+A description of the specific setup adopted for the various flow cases available is reported in the following.
 
 -------------------------------------
 Compressible plane channel flow
@@ -201,93 +202,82 @@ Compressible plane channel flow
 
 Simulations of the compressible plane channel flow 
 are carried out imposing a constant flow rate. 
-The height of the domain :math:`L_y` is equal to :math:`2\,h`, 
-where :math:`h` thus indicates the half-height of the channel. 
+The height of the domain :math:`L_y` is equal to :math:`2\,h^*`, 
+where :math:`h^*` thus indicates the half-height of the channel. 
 
 *Bulk quantites* are indicated with :math:`B` subscript and are defined as: 
 
 - bulk density
 .. math::
 
-   \rho_B = \frac{1}{V} \int_V \rho\, \mathrm{d}V
+   \rho^*_B = \frac{1}{V} \int_V \rho^*\, \mathrm{d}V
 
 - bulk velocity
 .. math::
 
-   U_B = \frac{1}{\rho_B\,V} \int_V \rho\,u\, \mathrm{d}V
+   U^*_B = \frac{1}{\rho^*_B\,V} \int_V \rho^*\,u^*\, \mathrm{d}V
 
 - bulk temperature
 .. math::
 
-   T_B = \frac{1}{\rho_B\,U_B\,V} \int_V \rho\,u\,T\, \mathrm{d}V
+   T^*_B = \frac{1}{\rho^*_B\,U^*_B\,V} \int_V \rho^*\,u^*\,T^*\, \mathrm{d}V
 
 where :math:`V` is the volume of the computational domain, 
-:math:`\rho` is the density, 
-:math:`u` is the streamwise velocity, 
-and :math:`T` is the temperature.  
+:math:`\rho^*` is the density, 
+:math:`u^*` is the streamwise velocity, 
+and :math:`T^*` is the temperature.  
 
-*Reference quantities* are indicated with :math:`R` subscript and are defined as:
+Relevant *nondimensional parameters* for the compressible channel flow case are:
 
-- reference length
+- friction Reynolds number 
 .. math::
 
-   L_R = h
-
-- reference density
-.. math::
-
-   \rho_R = \rho_B
-
-- reference temperature
-.. math::
-
-   T_R = T_w
-
-- reference velocity
-.. math::
-
-   U_R = \sqrt{R\,T_w}
-
-- reference time
-.. math::
-
-   t_R = L_R/U_R
-
-where :math:`T_w` is the wall temperature, and :math:`R` is the gas constant.
-
-Relevant flow *nondimensional parameters* are: 
-
-- estimated friction Reynolds number 
-.. math::
-
-   Re_\tau = \frac{u_\tau\,h}{\nu_w}
+   Re_\tau = \frac{u^*_\tau\,h^*}{\nu^*_w}
 
 - bulk Reynolds number based on the bulk temperature
 .. math::
 
-   Re_B = \frac{\rho_B\,U_B\,h}{\mu(T_B)}
+   Re_B = \frac{\rho^*_B\,U^*_B\,h^*}{\mu^*(T^*_B)}
 
 - bulk Reynolds number based on the wall temperature
 .. math::
 
-   \widetilde{Re}_B = \frac{\rho_B\,U_B\,h}{\mu(T_w)}
+   Re^w_B = \frac{\rho^*_B\,U^*_B\,h^*}{\mu^*(T^*_w)}
 
 - bulk Mach number based on the bulk temperature
 .. math::
 
-   M_B = \frac{U_B}{\sqrt{\gamma\,R\,T_B}}
+   M_B = \frac{U^*_B}{\sqrt{\gamma\,R^*\,T^*_B}}
 
 - bulk Mach number based on the wall temperature
 .. math::
 
-   \widetilde{M}_B = \frac{U_B}{\sqrt{\gamma\,R\,T_w}}
+   M^w_B = \frac{U^*_B}{\sqrt{\gamma\,R^*\,T^*_w}}
 
-where :math:`u_\tau` is the friction velocity, 
-:math:`\nu_w` is the kinematic viscosity at the wall, 
-:math:`\mu(T)` is the dynamic viscosity at temperature :math:`T`, 
-and :math:`\gamma = C_p/C_v` is the heat capacity ratio, 
-obtained dividing the specific heat capacity at constant pressure :math:`C_p`
-by the specific heat capacity at constant volume :math:`C_v`.
+where :math:`u^*_\tau` is the friction velocity, 
+:math:`\nu^*_w` is the kinematic viscosity at the wall, 
+:math:`\mu^*(T^*)` is the dynamic viscosity at temperature :math:`T^*`, 
+and :math:`\gamma = C^*_p/C^*_v` is the heat capacity ratio, 
+obtained dividing the specific heat capacity at constant pressure :math:`C^*_p`
+by the specific heat capacity at constant volume :math:`C^*_v`.
+
+For channel flow computations the folloing choice is adopted for the *primary Reference quantities*:
+
+- reference length
+.. math::
+
+   L^*_R = h^*
+
+- reference density
+.. math::
+
+   \rho^*_R = \rho^*_B
+
+- reference temperature
+.. math::
+
+   T^*_R = T^*_w
+
 
 For what concerns the bulk temperature, two different options are available for the simulations:
 

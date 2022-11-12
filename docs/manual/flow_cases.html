@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Setting input file" href="input.html" />
+    <link rel="next" title="STREAmS flow cases" href="adimfra.html" />
     <link rel="prev" title="Compiling and running" href="quick-start.html" /> 
 </head>
 
@@ -97,6 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#shock-wave-boundary-layer-interaction">Shock wave/boundary layer interaction</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="adimfra.html">STREAmS flow cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">Setting input file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output.html">Understading output files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Post-processing data</a></li>
@@ -213,7 +214,7 @@ and enthalpy are defined respectively as</p>
 \[e^* = \int_{T_R^*}^{T^*} C_v^*(T^*)\,\mathrm{d} T^* \quad \mathrm{and} \quad
 h^* = \int_{T_R^*}^{T^*} C_p^*(T^*)\,\mathrm{d} T^* \, .\]</div>
 <p>where <span class="math notranslate nohighlight">\(T_R^*\)</span> is the reference temperature, and
-<span class="math notranslate nohighlight">\(C_p\)</span> and <span class="math notranslate nohighlight">\(C_v\)</span> are respectively the specific heat capacity
+<span class="math notranslate nohighlight">\(C_p^*\)</span> and <span class="math notranslate nohighlight">\(C_v^*\)</span> are respectively the specific heat capacity
 at constant pressure and volume, which are assumed in general as functions
 of the temperature.</p>
 <p>The constitutive equations defining the viscous stress tensor and
@@ -231,26 +232,28 @@ conductivity, expressed in terms of the Prandtl number <span class="math notrans
 as <span class="math notranslate nohighlight">\(k^* = \mu^* C_p^*/Pr\)</span>.</p>
 <p>For the viscosity-temperature relationship, two options are available:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mu^* = \mu^*(T_R^*) f(T^*/T^*_R) = \mu^*(T_R^*) \cdot
+\[\begin{split}\mu^* = \mu^*(T_R^*) f(\frac{T^*}/{T^*_R}) = \mu^*(T_R^*) \cdot
 \begin{cases}
 \left(\frac{T^*}{T_R^*}\right)^\alpha &amp; \mathrm{Power\,law}\\
 \frac{T^*}{T_R^*} \frac{1 + S^*/T_R^*}{T^*/T_R^* + S^*/T_R^*} &amp; \mathrm{Sutherland's\,law}\\\,
 \end{cases}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(S^*\)</span> are coefficients that depend on the fluid.</p>
 <p>In order to obtain the nondimensional form of the governing equations,
-we define the following reference quantities. The specific choice assumed
+we define the following reference quantities. The specific choice here assumed
 makes it possible to use nondimensional variables, while retaining
 – almost – the same form that the governing equations have when using
 dimensional variables.</p>
-<p>In particular, we assume that density, temperature, and lengths are
-made nondimensional as:</p>
+<p>We start by assuming four “primary” reference values, namely the specifc gas constant <span class="math notranslate nohighlight">\(R^*\)</span>,
+a reference density <span class="math notranslate nohighlight">\(\rho_R\)</span>, temperature <span class="math notranslate nohighlight">\(T_R\)</span> and length <span class="math notranslate nohighlight">\(L_R\)</span>.
+Consequenly, density, temperature, and lengths are  made nondimensional as:</p>
 <div class="math notranslate nohighlight">
 \[\rho = \frac{\rho^*}{\rho^*_R}, \quad T = \frac{T^*}{T^*_R}, \quad x_i = \frac{x^*_i}{L_R^*}\]</div>
 <p>From the reference values chosen above, it follows that:</p>
 <div class="math notranslate nohighlight">
 \[p_R^* = \rho_R^* R^* T^*_R \quad \mathrm{and} \quad U_R^* = \sqrt{R^* T^*_R}\,.\]</div>
-<p>implying that <span class="math notranslate nohighlight">\(p = p^*/P^*_R\)</span>, and <span class="math notranslate nohighlight">\(u_i = u_i^*/U_R^*\)</span>.</p>
-<p>Note that the reference velocity is equal to the speed of sound evaluated at the reference temperature, except for the factor <span class="math notranslate nohighlight">\(\sqrt{\gamma}\)</span>.</p>
+<p>implying that <span class="math notranslate nohighlight">\(p = p^*/p^*_R\)</span>, and <span class="math notranslate nohighlight">\(u_i = u_i^*/U_R^*\)</span>.</p>
+<p>Note that the reference velocity <span class="math notranslate nohighlight">\(U_R^*\)</span> is equal to the speed of sound evaluated
+at the reference temperature, except for the factor <span class="math notranslate nohighlight">\(\sqrt{\gamma}\)</span>.</p>
 <p>The nondimensional time is <span class="math notranslate nohighlight">\(t = t^*/t^*_R\)</span>, where the
 reference time is assumed to be equal to:</p>
 <div class="math notranslate nohighlight">
@@ -284,103 +287,91 @@ it is possible to obtain the following nondimensional form:</p>
 <div class="math notranslate nohighlight">
 \[e = \int_{1}^{T} C_v(T)\,\mathrm{d} T \quad \mathrm{and} \quad
 h = \int_{1}^{T} C_p(T)\,\mathrm{d} T \, .\]</div>
-<p>We stress that the reference dynamic viscosity does <strong>not</strong> coincide with
-the dynamic viscosity at the reference temperature. In particular,
-one has that:</p>
+<p>The nondimensional version of the viscosity-temperature relationship becomes</p>
 <div class="math notranslate nohighlight">
-\[\mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T_R^*)}{\mu^*_R} f(T) = \mu_{T_R} f(T)\,.\]</div>
-<p>This quantity is evaluated as a function of the nondimensional flow parameters provided by the user in the input (Mach number, Reynolds number, Eckert number),
-whose specific meaning for various flow cases implemented in STREAmS is presented
-below.</p>
-<p>The main parameters of each case are reported in the following.
-ASTERISCHI!!!</p>
+\[\mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T_R^*)}{\mu^*_R} f(\frac{T^*}{T^*_R}) = \mu_{T_R} f(T)\,.\]</div>
+<p>We stress that the reference dynamic viscosity <span class="math notranslate nohighlight">\(\mu_R^*\)</span> does <strong>not</strong> coincide with
+the dynamic viscosity at the reference temperature <span class="math notranslate nohighlight">\(\mu^*(T_R^*)\)</span>. Their ratio
+is a function of the nondimensional flow parameters provided by the user in the input
+(Mach number, Reynolds number, Eckert number), whose specific meaning for various flow cases
+implemented in STREAmS is presented below.</p>
+<p>A description of the specific setup adopted for the various flow cases available is reported in the following.</p>
 </div>
 <div class="section" id="compressible-plane-channel-flow">
 <h2>Compressible plane channel flow<a class="headerlink" href="#compressible-plane-channel-flow" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/Channel_case.png"><img alt="../_images/Channel_case.png" src="../_images/Channel_case.png" style="width: 600px;" /></a>
 <p>Simulations of the compressible plane channel flow
 are carried out imposing a constant flow rate.
-The height of the domain <span class="math notranslate nohighlight">\(L_y\)</span> is equal to <span class="math notranslate nohighlight">\(2\,h\)</span>,
-where <span class="math notranslate nohighlight">\(h\)</span> thus indicates the half-height of the channel.</p>
+The height of the domain <span class="math notranslate nohighlight">\(L_y\)</span> is equal to <span class="math notranslate nohighlight">\(2\,h^*\)</span>,
+where <span class="math notranslate nohighlight">\(h^*\)</span> thus indicates the half-height of the channel.</p>
 <p><em>Bulk quantites</em> are indicated with <span class="math notranslate nohighlight">\(B\)</span> subscript and are defined as:</p>
 <ul class="simple">
 <li><p>bulk density</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\rho_B = \frac{1}{V} \int_V \rho\, \mathrm{d}V\]</div>
+\[\rho^*_B = \frac{1}{V} \int_V \rho^*\, \mathrm{d}V\]</div>
 <ul class="simple">
 <li><p>bulk velocity</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[U_B = \frac{1}{\rho_B\,V} \int_V \rho\,u\, \mathrm{d}V\]</div>
+\[U^*_B = \frac{1}{\rho^*_B\,V} \int_V \rho^*\,u^*\, \mathrm{d}V\]</div>
 <ul class="simple">
 <li><p>bulk temperature</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[T_B = \frac{1}{\rho_B\,U_B\,V} \int_V \rho\,u\,T\, \mathrm{d}V\]</div>
+\[T^*_B = \frac{1}{\rho^*_B\,U^*_B\,V} \int_V \rho^*\,u^*\,T^*\, \mathrm{d}V\]</div>
 <p>where <span class="math notranslate nohighlight">\(V\)</span> is the volume of the computational domain,
-<span class="math notranslate nohighlight">\(\rho\)</span> is the density,
-<span class="math notranslate nohighlight">\(u\)</span> is the streamwise velocity,
-and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.</p>
-<p><em>Reference quantities</em> are indicated with <span class="math notranslate nohighlight">\(R\)</span> subscript and are defined as:</p>
+<span class="math notranslate nohighlight">\(\rho^*\)</span> is the density,
+<span class="math notranslate nohighlight">\(u^*\)</span> is the streamwise velocity,
+and <span class="math notranslate nohighlight">\(T^*\)</span> is the temperature.</p>
+<p>Relevant <em>nondimensional parameters</em> for the compressible channel flow case are:</p>
 <ul class="simple">
-<li><p>reference length</p></li>
+<li><p>friction Reynolds number</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[L_R = h\]</div>
-<ul class="simple">
-<li><p>reference density</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\rho_R = \rho_B\]</div>
-<ul class="simple">
-<li><p>reference temperature</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[T_R = T_w\]</div>
-<ul class="simple">
-<li><p>reference velocity</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[U_R = \sqrt{R\,T_w}\]</div>
-<ul class="simple">
-<li><p>reference time</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[t_R = L_R/U_R\]</div>
-<p>where <span class="math notranslate nohighlight">\(T_w\)</span> is the wall temperature, and <span class="math notranslate nohighlight">\(R\)</span> is the gas constant.</p>
-<p>Relevant flow <em>nondimensional parameters</em> are:</p>
-<ul class="simple">
-<li><p>estimated friction Reynolds number</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[Re_\tau = \frac{u_\tau\,h}{\nu_w}\]</div>
+\[Re_\tau = \frac{u^*_\tau\,h^*}{\nu^*_w}\]</div>
 <ul class="simple">
 <li><p>bulk Reynolds number based on the bulk temperature</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[Re_B = \frac{\rho_B\,U_B\,h}{\mu(T_B)}\]</div>
+\[Re_B = \frac{\rho^*_B\,U^*_B\,h^*}{\mu^*(T^*_B)}\]</div>
 <ul class="simple">
 <li><p>bulk Reynolds number based on the wall temperature</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\widetilde{Re}_B = \frac{\rho_B\,U_B\,h}{\mu(T_w)}\]</div>
+\[Re^w_B = \frac{\rho^*_B\,U^*_B\,h^*}{\mu^*(T^*_w)}\]</div>
 <ul class="simple">
 <li><p>bulk Mach number based on the bulk temperature</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[M_B = \frac{U_B}{\sqrt{\gamma\,R\,T_B}}\]</div>
+\[M_B = \frac{U^*_B}{\sqrt{\gamma\,R^*\,T^*_B}}\]</div>
 <ul class="simple">
 <li><p>bulk Mach number based on the wall temperature</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\widetilde{M}_B = \frac{U_B}{\sqrt{\gamma\,R\,T_w}}\]</div>
-<p>where <span class="math notranslate nohighlight">\(u_\tau\)</span> is the friction velocity,
-<span class="math notranslate nohighlight">\(\nu_w\)</span> is the kinematic viscosity at the wall,
-<span class="math notranslate nohighlight">\(\mu(T)\)</span> is the dynamic viscosity at temperature <span class="math notranslate nohighlight">\(T\)</span>,
-and <span class="math notranslate nohighlight">\(\gamma = C_p/C_v\)</span> is the heat capacity ratio,
-obtained dividing the specific heat capacity at constant pressure <span class="math notranslate nohighlight">\(C_p\)</span>
-by the specific heat capacity at constant volume <span class="math notranslate nohighlight">\(C_v\)</span>.</p>
+\[M^w_B = \frac{U^*_B}{\sqrt{\gamma\,R^*\,T^*_w}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(u^*_\tau\)</span> is the friction velocity,
+<span class="math notranslate nohighlight">\(\nu^*_w\)</span> is the kinematic viscosity at the wall,
+<span class="math notranslate nohighlight">\(\mu^*(T^*)\)</span> is the dynamic viscosity at temperature <span class="math notranslate nohighlight">\(T^*\)</span>,
+and <span class="math notranslate nohighlight">\(\gamma = C^*_p/C^*_v\)</span> is the heat capacity ratio,
+obtained dividing the specific heat capacity at constant pressure <span class="math notranslate nohighlight">\(C^*_p\)</span>
+by the specific heat capacity at constant volume <span class="math notranslate nohighlight">\(C^*_v\)</span>.</p>
+<p>For channel flow computations the folloing choice is adopted for the <em>primary Reference quantities</em>:</p>
+<ul class="simple">
+<li><p>reference length</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[L^*_R = h^*\]</div>
+<ul class="simple">
+<li><p>reference density</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\rho^*_R = \rho^*_B\]</div>
+<ul class="simple">
+<li><p>reference temperature</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[T^*_R = T^*_w\]</div>
 <p>For what concerns the bulk temperature, two different options are available for the simulations:</p>
 <p>– <em>Fixed bulk temperature.</em> In this case, the user must supply the code
 with the desired values of <span class="math notranslate nohighlight">\(M_B\)</span>, <span class="math notranslate nohighlight">\(Re_\tau\)</span>, and an
@@ -519,7 +510,7 @@ the two following parameters:</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="input.html" class="btn btn-neutral float-right" title="Setting input file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="adimfra.html" class="btn btn-neutral float-right" title="STREAmS flow cases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="quick-start.html" class="btn btn-neutral float-left" title="Compiling and running" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
