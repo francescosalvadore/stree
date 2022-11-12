@@ -346,14 +346,14 @@ Subscripts B=channel-bulk, W=wall, I=boundary-layer-inlet.</span><a class="heade
 <div class="line">Channel</div>
 </div>
 </td>
-<td><p><span class="math notranslate nohighlight">\(\rho_B\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(T_W\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(h\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\rho^*_B\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(T^*_W\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(h^*\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>Boundary layer</p></td>
-<td><p><span class="math notranslate nohighlight">\(\rho_\infty\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(T_\infty\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\delta_I\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\rho^*_\infty\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(T^*_\infty\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\delta^*_I\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -470,42 +470,24 @@ Please note that the non-dimensional groups have been written without asterisks
 because the definitions stand considering both non-dimensional and dimensional variables.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Channel with fixed bulk temperature: derivation of flow quantities from input</p>
+<p>Inputs:</p>
+<ul class="simple">
+<li><p>References quantities (unitary non dimensional values): <span class="math notranslate nohighlight">\(\rho_B\)</span>, <span class="math notranslate nohighlight">\(T_w\)</span>, <span class="math notranslate nohighlight">\(h\)</span></p></li>
+<li><p>Non-dimensional groups: <span class="math notranslate nohighlight">\(Re_\tau\)</span>, <span class="math notranslate nohighlight">\(M_B\)</span>, <span class="math notranslate nohighlight">\(\theta\)</span>, <span class="math notranslate nohighlight">\(Pr\)</span></p></li>
+</ul>
+<p>Outputs:</p>
+<ul class="simple">
+<li><p>Non-dimensional flow parameters  <span class="math notranslate nohighlight">\(T_B\)</span>, <span class="math notranslate nohighlight">\(U_B\)</span>, <span class="math notranslate nohighlight">\(\mu_w\)</span>, <span class="math notranslate nohighlight">\(k_w\)</span></p></li>
+</ul>
+<p>Derivation:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 &amp;\frac{T_R}{T_B} = 1 + \frac{\gamma-1}{2} r M_B^2 \\
 &amp;\frac{T_W}{T_B} = 1 + \theta \left( \frac{T_R}{T_B} - 1 \right) \\
 &amp;\widetilde{M_B} = M_B \sqrt{\frac{T_B}{T_W}} \\
 &amp;\frac{T_W}{T_R} = \frac{T_W}{T_B} \cdot \frac{T_B}{T_R}   \\
-&amp;\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = cha_estimator\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
-&amp;T_B = \frac{T_B}{T_W} T_W \\
-&amp;u_B = \widetilde{M_B} \sqrt{\gamma_w R T_W} \\
-&amp;\mu_w = \frac{\rho_B u_B h}{\widetilde{Re_B}} \\
-&amp;k_w = \frac{\mu_w c_{p,w}}{Pr}
-\end{align}\end{split}\]</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-&amp;\theta = -1\\
-&amp;M_B = \sqrt{\frac{\widetilde{M_B}^2}{1-\frac{\gamma-1}{2} r \theta \widetilde{M_B}^2}} \\
-&amp;\frac{T_R}{T_B} = 1 + \frac{\gamma-1}{2} r M_B^2 \\
-&amp;\frac{T_W}{T_B} = 1 + \theta \left( \frac{T_R}{T_B} - 1 \right) \\
-&amp;\frac{T_W}{T_R} = \frac{T_W}{T_B} \cdot \frac{T_B}{T_R}   \\
-&amp;\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = cha_estimator\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
-&amp;T_B = \frac{T_B}{T_W} T_W \\
-&amp;u_B = \widetilde{M_B} \sqrt{\gamma_w R T_W} \\
-&amp;\mu_w = \frac{\rho_B u_B h}{\widetilde{Re_B}} \\
-&amp;k_w = \frac{\mu_w c_{p,w}}{Pr}
-\end{align}\end{split}\]</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-&amp;T_R = T_\infty (1+\frac{\gamma-1}{2} r M_\infty^2)
-&amp;T_w = \theta * (T_R-T_\infty) + T_\infty
-&amp;\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = bl_estimator\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
+&amp;\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = cha_{estimator}\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
 &amp;T_B = \frac{T_B}{T_W} T_W \\
 &amp;u_B = \widetilde{M_B} \sqrt{\gamma_w R T_W} \\
 &amp;\mu_w = \frac{\rho_B u_B h}{\widetilde{Re_B}} \\
@@ -574,6 +556,33 @@ more physically meaningful non-dimensional groups which can be assigned from inp
 and <span class="math notranslate nohighlight">\(T_{B,R}\)</span> is the recovery wall temperature based on <span class="math notranslate nohighlight">\(T_B\)</span>.
 Please note that the non-dimensional groups have been written without asterisks
 because the definitions stand considerind both non-dimensional of dimensional variables.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Channel with free bulk temperature: derivation of flow quantities from input</p>
+<p>Inputs:</p>
+<ul class="simple">
+<li><p>References quantities (unitary non dimensional values): <span class="math notranslate nohighlight">\(\rho_B\)</span>, <span class="math notranslate nohighlight">\(T_w\)</span>, <span class="math notranslate nohighlight">\(h\)</span></p></li>
+<li><p>Non-dimensional groups: <span class="math notranslate nohighlight">\(Re_\tau\)</span>, <span class="math notranslate nohighlight">\(\widetilde{M_B}\)</span>, <span class="math notranslate nohighlight">\(Pr\)</span></p></li>
+</ul>
+<p>Outputs:</p>
+<ul class="simple">
+<li><p>Non-dimensional flow parameters  <span class="math notranslate nohighlight">\(U_B\)</span>, <span class="math notranslate nohighlight">\(\mu_w\)</span>, <span class="math notranslate nohighlight">\(k_w\)</span></p></li>
+</ul>
+<p>Derivation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+&amp;\theta = -1\\
+&amp;M_B = \sqrt{\frac{\widetilde{M_B}^2}{1-\frac{\gamma-1}{2} r \theta \widetilde{M_B}^2}} \\
+&amp;\frac{T_R}{T_B} = 1 + \frac{\gamma-1}{2} r M_B^2 \\
+&amp;\frac{T_W}{T_B} = 1 + \theta \left( \frac{T_R}{T_B} - 1 \right) \\
+&amp;\frac{T_W}{T_R} = \frac{T_W}{T_B} \cdot \frac{T_B}{T_R}   \\
+&amp;\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = cha_{estimator}\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
+&amp;T_B = \frac{T_B}{T_W} T_W \\
+&amp;u_B = \widetilde{M_B} \sqrt{\gamma_w R T_W} \\
+&amp;\mu_w = \frac{\rho_B u_B h}{\widetilde{Re_B}} \\
+&amp;k_w = \frac{\mu_w c_{p,w}}{Pr}
+\end{align}\end{split}\]</div>
+</div>
 </div>
 <div class="section" id="flow-case-2-a-boundary-layer">
 <h3>[Flow-case 2-a] Boundary layer<a class="headerlink" href="#flow-case-2-a-boundary-layer" title="Permalink to this headline">¶</a></h3>
@@ -648,6 +657,29 @@ more physically meaningful non-dimensional groups which can be assigned from inp
 and <span class="math notranslate nohighlight">\(T_{B,R}\)</span> is the recovery wall temperature based on <span class="math notranslate nohighlight">\(T_B\)</span>.
 Please note that the non-dimensional groups have been written without asterisks
 because the definitions stand considerind both non-dimensional of dimensional variables.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Boundary layer: derivation of flow quantities from input</p>
+<p>Inputs:</p>
+<ul class="simple">
+<li><p>References quantities (unitary non dimensional values): <span class="math notranslate nohighlight">\(\rho_\infty\)</span>, <span class="math notranslate nohighlight">\(T_\infty\)</span>, <span class="math notranslate nohighlight">\(\delta_I\)</span></p></li>
+<li><p>Non-dimensional groups: <span class="math notranslate nohighlight">\(Re_\tau\)</span>, <span class="math notranslate nohighlight">\(M_\infty, :math:\)</span>theta`, <span class="math notranslate nohighlight">\(Pr\)</span></p></li>
+</ul>
+<p>Outputs:</p>
+<ul class="simple">
+<li><p>Non-dimensional flow parameters <span class="math notranslate nohighlight">\(U_\infty\)</span>, <span class="math notranslate nohighlight">\(\mu_\infty\)</span>, <span class="math notranslate nohighlight">\(k_\infty\)</span>, <span class="math notranslate nohighlight">\(T_w\)</span></p></li>
+</ul>
+<p>Derivation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+&amp;T_R = T_\infty (1+\frac{\gamma-1}{2} r M_\infty^2) \\
+&amp;T_w = \theta (T_R-T_\infty) + T_\infty \\
+&amp;\widetilde{Re_\infty} = \frac{\rho_\infty\,U_\infty\,\delta_I}{\mu_\infty} = bl_{estimator}\left(Re_\tau, M_\infty, \frac{T_w}{T_R}\right) \\
+&amp;u_\infty = \widetilde{M_\infty} \sqrt{\gamma_\infty R T_\infty} \\
+&amp;\mu_\infty = \frac{\rho_\infty u_\infty h}{\widetilde{Re_\infty}} \\
+&amp;k_\infty = \frac{\mu_\infty c_{p,\infty}}{Pr}
+\end{align}\end{split}\]</div>
+</div>
 </div>
 <div class="section" id="flow-case-2-b-shock-boundary-layer-interaction">
 <h3>Flow case [2-b] - Shock-boundary layer interaction<a class="headerlink" href="#flow-case-2-b-shock-boundary-layer-interaction" title="Permalink to this headline">¶</a></h3>

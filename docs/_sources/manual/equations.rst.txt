@@ -180,13 +180,13 @@ The other three reference quantities are set according to the flow case as summa
      - :math:`T_0`   
      - :math:`L_0`   
    * - | Channel
-     - :math:`\rho_B` 
-     - :math:`T_W`    
-     - :math:`h`      
+     - :math:`\rho^*_B` 
+     - :math:`T^*_W`    
+     - :math:`h^*`      
    * - Boundary layer
-     - :math:`\rho_\infty`  
-     - :math:`T_\infty`     
-     - :math:`\delta_I` 
+     - :math:`\rho^*_\infty`  
+     - :math:`T^*_\infty`     
+     - :math:`\delta^*_I` 
 
 Moreover, we also set the reference temperatures of energy :math:`T_{R,E}` and viscosity :math:`T_{R,V}` equal to the reference temperature 
 for non-dimensionalization :math:`T_0`.
@@ -310,7 +310,20 @@ and :math:`T_{B,R}` is the recovery wall temperature based on :math:`T_B`.
 Please note that the non-dimensional groups have been written without asterisks
 because the definitions stand considering both non-dimensional and dimensional variables.
 
-.. note::
+.. note:: Channel with fixed bulk temperature: derivation of flow quantities from input
+
+   Inputs:
+
+   - References quantities (unitary non dimensional values): :math:`\rho_B`, :math:`T_w`, :math:`h`
+
+   - Non-dimensional groups: :math:`Re_\tau`, :math:`M_B`, :math:`\theta`, :math:`Pr`
+
+   Outputs:
+
+   - Non-dimensional flow parameters  :math:`T_B`, :math:`U_B`, :math:`\mu_w`, :math:`k_w`   
+
+
+   Derivation:
 
    .. math::
 
@@ -319,39 +332,7 @@ because the definitions stand considering both non-dimensional and dimensional v
       &\frac{T_W}{T_B} = 1 + \theta \left( \frac{T_R}{T_B} - 1 \right) \\
       &\widetilde{M_B} = M_B \sqrt{\frac{T_B}{T_W}} \\
       &\frac{T_W}{T_R} = \frac{T_W}{T_B} \cdot \frac{T_B}{T_R}   \\
-      &\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = cha_estimator\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
-      &T_B = \frac{T_B}{T_W} T_W \\
-      &u_B = \widetilde{M_B} \sqrt{\gamma_w R T_W} \\
-      &\mu_w = \frac{\rho_B u_B h}{\widetilde{Re_B}} \\
-      &k_w = \frac{\mu_w c_{p,w}}{Pr}
-      \end{align}
-
-
-.. note::
-
-   .. math::
-
-      \begin{align}
-      &\theta = -1\\
-      &M_B = \sqrt{\frac{\widetilde{M_B}^2}{1-\frac{\gamma-1}{2} r \theta \widetilde{M_B}^2}} \\
-      &\frac{T_R}{T_B} = 1 + \frac{\gamma-1}{2} r M_B^2 \\
-      &\frac{T_W}{T_B} = 1 + \theta \left( \frac{T_R}{T_B} - 1 \right) \\
-      &\frac{T_W}{T_R} = \frac{T_W}{T_B} \cdot \frac{T_B}{T_R}   \\
-      &\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = cha_estimator\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
-      &T_B = \frac{T_B}{T_W} T_W \\
-      &u_B = \widetilde{M_B} \sqrt{\gamma_w R T_W} \\
-      &\mu_w = \frac{\rho_B u_B h}{\widetilde{Re_B}} \\
-      &k_w = \frac{\mu_w c_{p,w}}{Pr}
-      \end{align}
-
-.. note::
-
-   .. math::
-
-      \begin{align}
-      &T_R = T_\infty (1+\frac{\gamma-1}{2} r M_\infty^2)
-      &T_w = \theta * (T_R-T_\infty) + T_\infty
-      &\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = bl_estimator\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
+      &\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = cha_{estimator}\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
       &T_B = \frac{T_B}{T_W} T_W \\
       &u_B = \widetilde{M_B} \sqrt{\gamma_w R T_W} \\
       &\mu_w = \frac{\rho_B u_B h}{\widetilde{Re_B}} \\
@@ -413,6 +394,36 @@ where :math:`u_\tau` is the friction velocity,
 and :math:`T_{B,R}` is the recovery wall temperature based on :math:`T_B`.
 Please note that the non-dimensional groups have been written without asterisks
 because the definitions stand considerind both non-dimensional of dimensional variables.
+
+.. note:: Channel with free bulk temperature: derivation of flow quantities from input
+
+
+   Inputs:
+
+   - References quantities (unitary non dimensional values): :math:`\rho_B`, :math:`T_w`, :math:`h`
+
+   - Non-dimensional groups: :math:`Re_\tau`, :math:`\widetilde{M_B}`, :math:`Pr`
+
+   Outputs:
+
+   - Non-dimensional flow parameters  :math:`U_B`, :math:`\mu_w`, :math:`k_w`   
+
+   Derivation:
+
+   .. math::
+
+      \begin{align}
+      &\theta = -1\\
+      &M_B = \sqrt{\frac{\widetilde{M_B}^2}{1-\frac{\gamma-1}{2} r \theta \widetilde{M_B}^2}} \\
+      &\frac{T_R}{T_B} = 1 + \frac{\gamma-1}{2} r M_B^2 \\
+      &\frac{T_W}{T_B} = 1 + \theta \left( \frac{T_R}{T_B} - 1 \right) \\
+      &\frac{T_W}{T_R} = \frac{T_W}{T_B} \cdot \frac{T_B}{T_R}   \\
+      &\widetilde{Re_B} = \frac{\rho_B\,U_B\,h}{\mu(T_w)} = cha_{estimator}\left(Re_\tau, M_B, \frac{T_w}{T_R}\right) \\
+      &T_B = \frac{T_B}{T_W} T_W \\
+      &u_B = \widetilde{M_B} \sqrt{\gamma_w R T_W} \\
+      &\mu_w = \frac{\rho_B u_B h}{\widetilde{Re_B}} \\
+      &k_w = \frac{\mu_w c_{p,w}}{Pr}
+      \end{align}
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 [Flow-case 2-a] Boundary layer
@@ -480,6 +491,32 @@ where :math:`u_\tau` is the friction velocity,
 and :math:`T_{B,R}` is the recovery wall temperature based on :math:`T_B`.
 Please note that the non-dimensional groups have been written without asterisks
 because the definitions stand considerind both non-dimensional of dimensional variables.
+
+.. note:: Boundary layer: derivation of flow quantities from input
+
+   Inputs:
+
+   - References quantities (unitary non dimensional values): :math:`\rho_\infty`, :math:`T_\infty`, :math:`\delta_I`
+
+   - Non-dimensional groups: :math:`Re_\tau`, :math:`M_\infty, :math:`\theta`, :math:`Pr`
+
+   Outputs:
+
+   - Non-dimensional flow parameters :math:`U_\infty`, :math:`\mu_\infty`, :math:`k_\infty`, :math:`T_w`
+
+   Derivation:
+
+   .. math::
+
+      \begin{align}
+      &T_R = T_\infty (1+\frac{\gamma-1}{2} r M_\infty^2) \\
+      &T_w = \theta (T_R-T_\infty) + T_\infty \\
+      &\widetilde{Re_\infty} = \frac{\rho_\infty\,U_\infty\,\delta_I}{\mu_\infty} = bl_{estimator}\left(Re_\tau, M_\infty, \frac{T_w}{T_R}\right) \\
+      &u_\infty = \widetilde{M_\infty} \sqrt{\gamma_\infty R T_\infty} \\
+      &\mu_\infty = \frac{\rho_\infty u_\infty h}{\widetilde{Re_\infty}} \\
+      &k_\infty = \frac{\mu_\infty c_{p,\infty}}{Pr}
+      \end{align}
+
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Flow case [2-b] - Shock-boundary layer interaction
