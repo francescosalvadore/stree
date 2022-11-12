@@ -42,7 +42,7 @@ the Einsten summation notation, are thus:
 
 where we indicate dimensional quantities with the asterisk symbol. 
 In particular, :math:`\rho^*` is the density, 
-:math:`u_i^*` are the velocity components in the three coordinate directions, 
+:math:`u_i^*` is the velocity component in the i-th coordinate direction, 
 :math:`p^*` is the pressure, 
 :math:`\sigma^*_{ij}` is the viscous stress tensor, 
 :math:`E^*` is the total specific energy defined 
@@ -87,10 +87,10 @@ For the viscosity-temperature relationship, two options are available:
 
 .. math::
 
-   \mu^* = \mu^*(T_R^*) f(\frac{T^*}/{T^*_R}) = \mu^*(T_R^*) \cdot 
+   \mu^* = \mu^*(T_R^*) f(\frac{T^*}{T^*_R}) = \mu^*(T_R^*) \cdot 
    \begin{cases}
    \left(\frac{T^*}{T_R^*}\right)^\alpha & \mathrm{Power\,law}\\
-   \frac{T^*}{T_R^*} \frac{1 + S^*/T_R^*}{T^*/T_R^* + S^*/T_R^*} & \mathrm{Sutherland's\,law}\\\,
+   \frac{T^*}{T_R^*} \frac{1 + S^*/T_R^*}{T^*/T_R^* + S^*/T_R^*} & \mathrm{Sutherland's\,law} 
    \end{cases}
 
 where :math:`\alpha` and :math:`S^*` are coefficients that depend on the fluid.
@@ -101,9 +101,9 @@ makes it possible to use nondimensional variables, while retaining
 -- almost -- the same form that the governing equations have when using 
 dimensional variables. 
 
-We start by assuming four "primary" reference values, namely the specifc gas constant :math:`R^*`,
-a reference density :math:`\rho_R`, temperature :math:`T_R` and length :math:`L_R`.
-Consequenly, density, temperature, and lengths are  made nondimensional as:
+We start by assuming four *"primary"* reference values, namely the specific gas constant :math:`R^*`,
+a reference density :math:`\rho_R^*`, temperature :math:`T_R^*` and length :math:`L_R^*`.
+Consequenly, density, temperature, and lengths are made nondimensional as:
 
 .. math::
 
@@ -179,16 +179,16 @@ and
    e = \int_{1}^{T} C_v(T)\,\mathrm{d} T \quad \mathrm{and} \quad 
    h = \int_{1}^{T} C_p(T)\,\mathrm{d} T \, .
 
-The nondimensional version of the viscosity-temperature relationship becomes
+The nondimensional form of the viscosity-temperature relationship becomes
 
 .. math::
 
-   \mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T_R^*)}{\mu^*_R} f(\frac{T^*}{T^*_R}) = \mu_{T_R} f(T)\,.
+   \mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T^* = T_R^*)}{\mu^*_R} f \left(\frac{T^*}{T^*_R}\right) = \mu(T=1) f(T)\,.
 
 We stress that the reference dynamic viscosity :math:`\mu_R^*` does **not** coincide with 
-the dynamic viscosity at the reference temperature :math:`\mu^*(T_R^*)`. Their ratio
-is a function of the nondimensional flow parameters provided by the user in the input
-(Mach number, Reynolds number, Eckert number), whose specific meaning for various flow cases
+the dynamic viscosity at the reference temperature :math:`\mu^*(T^* = T_R^*)`. Their ratio
+is a function of the nondimensional flow parameters provided by the user in the input file 
+(Mach number, Reynolds number, Eckert number), whose specific meaning for the various flow cases
 implemented in STREAmS is presented below.
 
 A description of the specific setup adopted for the various flow cases available is reported in the following.
@@ -210,19 +210,19 @@ where :math:`h^*` thus indicates the half-height of the channel.
 - bulk density
 .. math::
 
-   \rho^*_B = \frac{1}{V} \int_V \rho^*\, \mathrm{d}V
+   \rho^*_B = \frac{1}{V^*} \int_{V^*} \rho^*\, \mathrm{d}V^*
 
 - bulk velocity
 .. math::
 
-   U^*_B = \frac{1}{\rho^*_B\,V} \int_V \rho^*\,u^*\, \mathrm{d}V
+   U^*_B = \frac{1}{\rho^*_B\,V^*} \int_{V^*} \rho^*\,u^*\, \mathrm{d}V^*
 
 - bulk temperature
 .. math::
 
-   T^*_B = \frac{1}{\rho^*_B\,U^*_B\,V} \int_V \rho^*\,u^*\,T^*\, \mathrm{d}V
+   T^*_B = \frac{1}{\rho^*_B\,U^*_B\,V^*} \int_{V^*} \rho^*\,u^*\,T^*\, \mathrm{d}V^*
 
-where :math:`V` is the volume of the computational domain, 
+where :math:`V^*` is the volume of the computational domain, 
 :math:`\rho^*` is the density, 
 :math:`u^*` is the streamwise velocity, 
 and :math:`T^*` is the temperature.  
@@ -254,14 +254,22 @@ Relevant *nondimensional parameters* for the compressible channel flow case are:
 
    M^w_B = \frac{U^*_B}{\sqrt{\gamma\,R^*\,T^*_w}}
 
+- nondimensional wall temperature (???wall?, :math:`T_b` in other sections???)
+
+.. math::
+   \Theta = \frac{T^*_w - T^*_B}{T^*_r - T^*_B}
+
 where :math:`u^*_\tau` is the friction velocity, 
 :math:`\nu^*_w` is the kinematic viscosity at the wall, 
 :math:`\mu^*(T^*)` is the dynamic viscosity at temperature :math:`T^*`, 
-and :math:`\gamma = C^*_p/C^*_v` is the heat capacity ratio, 
+:math:`T^*_w` is the wall temperature, 
+:math:`\gamma = C^*_p/C^*_v` is the heat capacity ratio, 
 obtained dividing the specific heat capacity at constant pressure :math:`C^*_p`
-by the specific heat capacity at constant volume :math:`C^*_v`.
+by the specific heat capacity at constant volume :math:`C^*_v`, 
+and :math:`T_r` is the recovery temperature.
 
-For channel flow computations the folloing choice is adopted for the *primary Reference quantities*:
+For channel flow computations, the *primary reference quantities*, besides the specific gas constant :math:`:R^*`,
+are:
 
 - reference length
 .. math::
@@ -272,37 +280,42 @@ For channel flow computations the folloing choice is adopted for the *primary Re
 .. math::
 
    \rho^*_R = \rho^*_B
-
+-
 - reference temperature
 .. math::
 
-   T^*_R = T^*_w
+   T^*_R = T^*_w\,.
 
-
-For what concerns the bulk temperature, two different options are available for the simulations:
+For what concerns the bulk temperature, STREAmS can run channel flow simulations 
+according to two possible options: 
 
 -- *Fixed bulk temperature.* In this case, the user must supply the code 
 with the desired values of :math:`M_B`, :math:`Re_\tau`, and an 
 estimate of :math:`\theta` in the input file. 
-The code provides the corresponding values of :math:`\widetilde{M}_B`, 
-:math:`\widetilde{Re}_B`, and :math:`Re_B`. CITA COLEMANN e MODESTI 
+The code provides the corresponding values of :math:`M_B^w`, 
+:math:`Re_B^w`, and :math:`Re_B`. CITA COLEMANN e MODESTI 
 
 -- *Freely-evolving bulk temperature.* In this case, the user must supply the 
-code with the desired values of :math:`\widetilde{M}_B` and 
+code with the desired values of :math:`M_B^w` and 
 :math:`Re_\tau` only, while :math:`\theta` must be set to 
 a value less than :math:`-1`. 
-The code provides the value of :math:`\widetilde{Re}_B`, and 
+The code provides the value of :math:`Re_B^w`, and 
 an estimate of :math:`M_B` and :math:`Re_B`. CITA ROUGHNESS JFM
 
-In the case of the compressible plane channel flow, 
-the reference temperature :math:`T_R^*` 
-is assumed to be the wall temperature :math:`T_w^*`, 
-and thus by considering the definition of the reference 
-dynamic viscosity, one has that:
+It is important to note that, since the reference temperature :math:`T_R^*` 
+is assumed to be equal to the wall temperature :math:`T_w^*`, 
+the dynamic viscosity at the reference temperature :math:`\mu(T=1)` is **not** equal to one, but rather:
 
 .. math::
 
-   \mu_{T_R} = \frac{\mu^*(T_w^*)}{\mu_R^*} = \frac{\mu^*(T_w^*)}{\rho_B^* U_B^* h^*} \frac{\rho_B^* U_B^* h^*}{\rho_R^* U_R^* L_R^*} = \sqrt{\gamma(T_w)} \frac{\widetilde{M}_B}{\widetilde{Re}_B}\,.
+   \mu(T=1) = \frac{\mu^*(T^*=T_w^*)}{\mu_R^*} = \frac{\mu^*(T ^*=T_w^*)}{\rho_B^* U_B^* h^*} \frac{\rho_B^* U_B^* h^*}{\rho_R^* U_R^* L_R^*} = \sqrt{\gamma(T=1)} \frac{M_B^w}{Re_B^w}\,.
+
+where :math:`\gamma(T=1)` is the heat capacity ratio at the reference temperature.
+Similarly, the nondimensional bulk velocity is **not** equal to one, but rather: 
+
+.. math::
+   
+  U_B = \frac{U_B^*}{U^*_R} = \frac{U_B^*}{\sqrt{R^* T_w^*}} = \sqrt{\gamma(T=1)} M_B^w\,.
 
 -------------------------------------
 Compressible boundary layer
@@ -314,62 +327,57 @@ Compressible boundary layer
 Simulations of the compressible boundary layer
 are carried out imposing a null pressure gradient. 
 
-*Reference quantities* are indicated with :math:`R` 
-subscript and are defined as:
-
-- reference length
-.. math::
-
-   L_R = \delta_0
-
-- reference density
-.. math::
-
-   \rho_R = \rho_\infty
-
-- reference temperature 
-.. math::
-
-   T_R = T_\infty
-
-- reference velocity
-.. math::
-
-   U_R = \sqrt{R\,T_\infty}
-
-- reference time
-.. math::
-
-   t_R = L_R/U_R
-
-where :math:`\delta_0` is the boundary layer thickness at the 
-beginning of the domain (???), :math:`\rho_\infty` is 
-the free-stream density, and :math:`T_\infty` is 
-the free-stream temperature.
-
-Relevant flow *nondimensional parameters* are: 
+Relevant *nondimensional parameters* for the compressible boundary layer are: 
 
 - estimated friction Reynolds number 
 .. math::
 
-   Re_\tau = \frac{u_\tau\,\delta_0}{\nu_w}
+   Re_\tau = \frac{u_\tau^*\,\delta_0^*}{\nu_w^*}
 
 - free-stream Mach number
 .. math::
 
-   M_\infty = \frac{U_\infty}{\sqrt{\gamma\,R\,T_\infty}}
+   M_\infty = \frac{U_\infty^*}{\sqrt{\gamma_\infty\,R^*\,T_\infty^*}}
 
-where :math:`U_\infty` is the free-stream velocity.
+where :math:`u_tau^*` is the friction velocity, 
+:math:`\delta_0^*` is the boundary layer thickness at the beginning of the domain (???), 
+:math:`\nu_w^*` is the kinematic viscosity at the wall, 
+and the subscript :math:`\infty` indicates that quantities are referred to free-stream 
+conditions. 
 
-In the case of the compressible boundary layer, 
-the reference temperature :math:`T_R^*` 
-is assumed to be the free-stream temperature :math:`T_\infty^*`, 
-and thus by considering the definition of the reference 
-dynamic viscosity, one has that:
+For boundary layer flow computations, the *primary reference quantities*, besides the specific gas constant :math:`:R^*`,
+are:
+
+- reference length
+.. math::
+
+   L_R^* = \delta_0^*
+
+- reference density
+.. math::
+
+   \rho_R^* = \rho_\infty^*
+
+- reference temperature 
+.. math::
+
+   T_R^* = T_\infty^*
+
+It is important to note that, since the reference temperature :math:`T_R^*`
+is assumed to be equal to the free-stream temperature :math:`T_\infty^*`,
+the dynamic viscosity at the reference temperature :math:`\mu(T=1)` is **not** equal to one, but rather:
 
 .. math::
 
-   \mu_{T_R} = \frac{\mu^*(T_\infty^*)}{\mu_R^*} = \frac{\mu^*(T_\infty^*)}{\rho_\infty^* U_\infty^* \delta^*} \frac{\rho_\infty^* U_\infty^* \delta^*}{\rho_R^* U_R^* L_R^*} = \sqrt{\gamma(T_\infty)} \frac{M_\infty}{Re_\infty}\,.
+   \mu(T=1) = \frac{\mu^*(T^*=T_\infty^*)}{\mu_R^*} = \frac{\mu^*(T^*=T_\infty^*)}{\rho_\infty^* U_\infty^* \delta_0^*} \frac{\rho_\infty^* U_\infty^* \delta_0^*}{\rho_R^* U_R^* L_R^*} = \sqrt{\gamma(T=1)} \frac{M_\infty}{Re_\infty}\,.
+
+where :math:`\gamma(T=1)` is the heat capacity ratio at the reference temperature.
+Similarly, the free-stream velocity is **not** equal to one, but rather:
+
+.. math::
+
+  U_\infty = \frac{U_\infty^*}{U^*_R} = \frac{U_\infty^*}{\sqrt{R^* T_\infty^*}} = \sqrt{\gamma(T=1)} M_\infty\,.
+
 
 -------------------------------------
 Shock wave/boundary layer interaction
@@ -382,51 +390,9 @@ Simulations of the shock wave/boundary layer interaction
 assume that an oblique shock wave from the top surface of the domain 
 impinges on a boundary layer developing on the flat bottom surface. 
 
-*Reference quantities* are indicated with :math:`R` subscript and, 
-as in the case of the compressible boundary layer, are defined as:
-
-- reference length
-.. math::
-
-   L_R = \delta_0
-
-- reference density
-.. math::
-
-   \rho_R = \rho_\infty
-
-- reference temperature 
-.. math::
-
-   T_R = T_\infty
-
-- reference velocity
-.. math::
-
-   U_R = \sqrt{R\,T_\infty}
-
-- reference time
-.. math::
-
-   t_R = L_R/U_R
-
-where :math:`\delta_0` is the thickness of the undisturbed 
-boundary layer at the beginning of the domain. (???)
-
-Relevant flow *nondimensional parameters*, as in  
-the case of the compressible boundary layer, are: 
-
-- estimated friction Reynolds number 
-.. math::
-
-   Re_\tau = \frac{u_\tau\,\delta_0}{\nu_w}
-
-- free-stream Mach number
-.. math::
-
-   M_\infty = \frac{U_\infty}{\sqrt{\gamma\,R\,T_\infty}}
-
-In order to define the shock system, the user must provide also 
+The relevant nondimensional parameters and primary reference quantities 
+when simulating the SBLI flow case are the same of the boundary layer flow case.
+In addition to these, in order to define the shock system, the user must provide also 
 the two following parameters: 
 
 - the *shock impingment location* :math:`x_{imp}^s`, which is the longitudinal coordinate where the impinging shock would intersect the bottom surface.
