@@ -463,7 +463,7 @@ Independent reference quantities for non-dimensionalizations are highlighted in 
 This means that corresponding non-dimensional quantities are taken as unitary.
 
 It would be possible to assign the remaining six quantities as inputs of the simulation. However,
-this is done only for :math:`L_x`, :math:`L_y`, and :math`L_z`. The other four quantities are estimated from
+this is done only for :math:`L_x`, :math:`L_y`, and :math:`L_z`. The other four quantities are estimated from
 more physically meaningful non-dimensional groups which can be assigned from input. In particular:
 
 - estimated friction Reynolds number 
@@ -498,7 +498,7 @@ because the definitions stand considerind both non-dimensional of dimensional va
 
    - References quantities (unitary non dimensional values): :math:`\rho_\infty`, :math:`T_\infty`, :math:`\delta_I`
 
-   - Non-dimensional groups: :math:`Re_\tau`, :math:`M_\infty, :math:`\theta`, :math:`Pr`
+   - Non-dimensional groups: :math:`Re_\tau`, :math:`M_\infty`, :math:`\theta`, :math:`Pr`
 
    Outputs:
 
