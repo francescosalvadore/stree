@@ -79,6 +79,8 @@ How to prepare code for public repository
 
 - If anything is reasonable, push to the public repo
  
+.. code-block:: console
+
    git add ..
    git commit -m "STREAMS_YY version released"
    git push
