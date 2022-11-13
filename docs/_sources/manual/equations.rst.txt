@@ -198,9 +198,9 @@ This can be done since such reference temperatures can be chosen freely. Please 
 
 A detailed discussion of each flow case follows.
 
--------------------------------------
+---------------------------------------------------
 Flow case [1] - Compressible plane channel flow
--------------------------------------
+---------------------------------------------------
 
 .. image:: ./figures/Channel_case.png
    :width: 600
@@ -426,7 +426,7 @@ because the definitions stand considerind both non-dimensional of dimensional va
       \end{align}
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-[Flow-case 2-a] Boundary layer
+Flow-case [2-a] Boundary layer
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: ./figures/BLay_case.png

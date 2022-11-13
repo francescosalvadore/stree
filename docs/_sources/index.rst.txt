@@ -10,17 +10,28 @@ Welcome to STREAmS-2 documentation!
 .. image:: _static/RenderView1_4023000.png
    :width: 600
 
+==================================
+Basic documentation
+==================================
+
 .. toctree::
    :maxdepth: 2
 
    manual/quick-start
    manual/flow_cases
-   manual/equations
    manual/input
    manual/output
    manual/postprocessing
    manual/gallery
 
+==================================
+Advanced documentation
+==================================
+
+.. toctree::
+   :maxdepth:2
+
+   manual/equations
    manual/convert
    manual/public
 

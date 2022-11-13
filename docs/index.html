@@ -89,11 +89,13 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual/quick-start.html">Compiling and running</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/flow_cases.html">STREAmS flow cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual/equations.html">STREAmS equations and flow cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/input.html">Setting input file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/output.html">Understading output files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/postprocessing.html">Post-processing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/gallery.html">Gallery of STREAmS results</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manual/equations.html">STREAmS equations and flow cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/convert.html">Converting STREAmS for different purposes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/public.html">How to prepare code for public repository</a></li>
 </ul>
@@ -166,6 +168,8 @@
   <div class="section" id="welcome-to-streams-2-documentation">
 <h1>Welcome to STREAmS-2 documentation!<a class="headerlink" href="#welcome-to-streams-2-documentation" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="_images/RenderView1_4023000.png"><img alt="_images/RenderView1_4023000.png" src="_images/RenderView1_4023000.png" style="width: 600px;" /></a>
+<div class="section" id="basic-documentation">
+<h2>Basic documentation<a class="headerlink" href="#basic-documentation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual/quick-start.html">Compiling and running</a><ul>
@@ -178,11 +182,6 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/flow_cases.html#compressible-plane-channel-flow">Compressible plane channel flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/flow_cases.html#compressible-boundary-layer">Compressible boundary layer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/flow_cases.html#shock-wave-boundary-layer-interaction">Shock wave/boundary layer interaction</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="manual/equations.html">STREAmS equations and flow cases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="manual/equations.html#non-dimensional-governing-equations">Non-dimensional governing equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/equations.html#flow-case-1-compressible-plane-channel-flow">Flow case [1] - Compressible plane channel flow</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/input.html">Setting input file</a><ul>
@@ -202,13 +201,46 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/gallery.html">Gallery of STREAmS results</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="advanced-documentation">
+<h2>Advanced documentation<a class="headerlink" href="#advanced-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manual/equations.html">STREAmS equations and flow cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/equations.html#non-dimensional-governing-equations">Non-dimensional governing equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/equations.html#flow-case-1-compressible-plane-channel-flow">Flow case [1] - Compressible plane channel flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual/equations.html#flow-case-1-a-fixed-bulk-temperature-channel">Flow case [1-a] - Fixed bulk temperature channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual/equations.html#flow-case-1-b-free-bulk-temperature-channel">Flow case [1-b] - Free bulk-temperature channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual/equations.html#flow-case-2-a-boundary-layer">Flow-case [2-a] Boundary layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual/equations.html#flow-case-2-b-shock-boundary-layer-interaction">Flow case [2-b] - Shock-boundary layer interaction</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="manual/convert.html">Converting STREAmS for different purposes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/convert.html#file-structure">File structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/convert.html#conversion-modes">Conversion modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/convert.html#conversion-modes">Conversion modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual/convert.html#hipfort">Hipfort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual/convert.html#cpu">CPU</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual/convert.html#work-flow">Work flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual/convert.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual/convert.html#ext">Ext</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual/convert.html#id1">Work flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual/convert.html#input-file">Input file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual/convert.html#id2">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/public.html">How to prepare code for public repository</a></li>
 </ul>
+</div>
 </div>
 </div>
 
