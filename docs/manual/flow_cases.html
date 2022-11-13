@@ -101,8 +101,9 @@
 <li class="toctree-l1"><a class="reference internal" href="input.html">Setting input file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output.html">Understading output files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Post-processing data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Converting STREAmS for different purposes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery of STREAmS results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Converting STREAmS for different purposes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="public.html">How to prepare code for public repository</a></li>
 </ul>
 
             
@@ -245,9 +246,9 @@ makes it possible to use nondimensional variables, while retaining
 dimensional variables.</p>
 <p>We start by assuming four <em>“primary”</em> reference values, namely the specific gas constant <span class="math notranslate nohighlight">\(R^*\)</span>,
 a reference density <span class="math notranslate nohighlight">\(\rho_R^*\)</span>, temperature <span class="math notranslate nohighlight">\(T_R^*\)</span> and length <span class="math notranslate nohighlight">\(L_R^*\)</span>.
-Consequenly, density, temperature, and lengths are made nondimensional as:</p>
+Consequenly, the gas costant, density, temperature, and lengths are made nondimensional as:</p>
 <div class="math notranslate nohighlight">
-\[\rho = \frac{\rho^*}{\rho^*_R}, \quad T = \frac{T^*}{T^*_R}, \quad x_i = \frac{x^*_i}{L_R^*}\]</div>
+\[R = \frac{R^*}{R^*} = 1, \quad \rho = \frac{\rho^*}{\rho^*_R}, \quad T = \frac{T^*}{T^*_R}, \quad x_i = \frac{x^*_i}{L_R^*}\]</div>
 <p>From the reference values chosen above, it follows that:</p>
 <div class="math notranslate nohighlight">
 \[p_R^* = \rho_R^* R^* T^*_R \quad \mathrm{and} \quad U_R^* = \sqrt{R^* T^*_R}\,.\]</div>
@@ -274,7 +275,7 @@ it is possible to obtain the following nondimensional form:</p>
 <div class="math notranslate nohighlight">
 \[\frac{\partial \rho E}{\partial t} + \frac{\partial \rho u_j H}{\partial x_j} = - \frac{\partial q_j}{\partial x_j} + \frac{\sigma_{ij} u_i}{\partial x_j}\]</div>
 <div class="math notranslate nohighlight">
-\[p = \rho T\]</div>
+\[p = \rho \, R \, T\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\sigma_{ij} = \mu \left( \frac{\partial u_i}{\partial x_j}
@@ -290,19 +291,18 @@ h = \int_{1}^{T} C_p(T)\,\mathrm{d} T \, .\]</div>
 <p>The nondimensional form of the viscosity-temperature relationship becomes</p>
 <div class="math notranslate nohighlight">
 \[\mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T^* = T_R^*)}{\mu^*_R} f \left(\frac{T^*}{T^*_R}\right) = \mu(T=1) f(T)\,.\]</div>
-<p>We stress that the reference dynamic viscosity <span class="math notranslate nohighlight">\(\mu_R^*\)</span> does <strong>not</strong> coincide with
-the dynamic viscosity at the reference temperature <span class="math notranslate nohighlight">\(\mu^*(T^* = T_R^*)\)</span>. Their ratio
+<p>We stress that the dynamic viscosity at the reference temperature <span class="math notranslate nohighlight">\(\mu^*(T^* = T_R^*)\)</span> does <strong>not</strong> coincide with
+the reference dynamic viscosity <span class="math notranslate nohighlight">\(\mu_R^*\)</span>. Their ratio,
+i.e. the nondimensional viscosity <span class="math notranslate nohighlight">\(\mu\)</span> at <span class="math notranslate nohighlight">\(T = 1\)</span>,
 is a function of the nondimensional flow parameters provided by the user in the input file
 (Mach number, Reynolds number, Eckert number), whose specific meaning for the various flow cases
 implemented in STREAmS is presented below.</p>
-<p>A description of the specific setup adopted for the various flow cases available is reported in the following.</p>
+<p>A description of the specific setup adopted for the various flow cases is reported in the following.</p>
 </div>
 <div class="section" id="compressible-plane-channel-flow">
 <h2>Compressible plane channel flow<a class="headerlink" href="#compressible-plane-channel-flow" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/Channel_case.png"><img alt="../_images/Channel_case.png" src="../_images/Channel_case.png" style="width: 600px;" /></a>
-<p>Simulations of the compressible plane channel flow
-are carried out imposing a constant flow rate.
-The height of the domain <span class="math notranslate nohighlight">\(L_y\)</span> is equal to <span class="math notranslate nohighlight">\(2\,h^*\)</span>,
+<p>The height of the computational domain is equal to <span class="math notranslate nohighlight">\(2\,h^*\)</span>,
 where <span class="math notranslate nohighlight">\(h^*\)</span> thus indicates the half-height of the channel.</p>
 <p><em>Bulk quantites</em> are indicated with <span class="math notranslate nohighlight">\(B\)</span> subscript and are defined as:</p>
 <ul class="simple">
@@ -351,7 +351,7 @@ and <span class="math notranslate nohighlight">\(T^*\)</span> is the temperature
 <div class="math notranslate nohighlight">
 \[M^w_B = \frac{U^*_B}{\sqrt{\gamma\,R^*\,T^*_w}}\]</div>
 <ul class="simple">
-<li><p>nondimensional wall temperature (???wall?, <span class="math notranslate nohighlight">\(T_b\)</span> in other sections???)</p></li>
+<li><p>nondimensional temperature</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\Theta = \frac{T^*_w - T^*_B}{T^*_r - T^*_B}\]</div>
@@ -360,49 +360,49 @@ and <span class="math notranslate nohighlight">\(T^*\)</span> is the temperature
 <span class="math notranslate nohighlight">\(\mu^*(T^*)\)</span> is the dynamic viscosity at temperature <span class="math notranslate nohighlight">\(T^*\)</span>,
 <span class="math notranslate nohighlight">\(T^*_w\)</span> is the wall temperature,
 <span class="math notranslate nohighlight">\(\gamma = C^*_p/C^*_v\)</span> is the heat capacity ratio,
-obtained dividing the specific heat capacity at constant pressure <span class="math notranslate nohighlight">\(C^*_p\)</span>
-by the specific heat capacity at constant volume <span class="math notranslate nohighlight">\(C^*_v\)</span>,
-and <span class="math notranslate nohighlight">\(T_r\)</span> is the recovery temperature.</p>
-<p>For channel flow computations, the <em>primary reference quantities</em>, besides the specific gas constant <span class="math notranslate nohighlight">\(:R^*\)</span>,
-are:</p>
+and <span class="math notranslate nohighlight">\(T^*_r\)</span> is the recovery temperature, defined as</p>
+<div class="math notranslate nohighlight">
+\[T^*_r = T_B^* \, (1 + \frac{\gamma-1}{2}\, r\, M^2_B)\]</div>
+<p><span class="math notranslate nohighlight">\(r = Pr^{1/3}\)</span> being the recovery factor.</p>
+<p>For channel flow computations, besides the specific gas constant <span class="math notranslate nohighlight">\(R^*\)</span>,
+the <em>primary reference quantities</em> are:</p>
 <ul class="simple">
-<li><p>reference length</p></li>
+<li><p>reference length: half-channel height</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[L^*_R = h^*\]</div>
 <ul class="simple">
-<li><p>reference density</p></li>
+<li><p>reference density: bulk density</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\rho^*_R = \rho^*_B\]</div>
 <ul class="simple">
-<li></li>
-<li><p>reference temperature</p></li>
+<li><p>reference temperature: wall temperature</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[T^*_R = T^*_w\,.\]</div>
-<p>For what concerns the bulk temperature, STREAmS can run channel flow simulations
-according to two possible options:</p>
-<p>– <em>Fixed bulk temperature.</em> In this case, the user must supply the code
-with the desired values of <span class="math notranslate nohighlight">\(M_B\)</span>, <span class="math notranslate nohighlight">\(Re_\tau\)</span>, and an
-estimate of <span class="math notranslate nohighlight">\(\theta\)</span> in the input file.
-The code provides the corresponding values of <span class="math notranslate nohighlight">\(M_B^w\)</span>,
-<span class="math notranslate nohighlight">\(Re_B^w\)</span>, and <span class="math notranslate nohighlight">\(Re_B\)</span>. CITA COLEMANN e MODESTI</p>
-<p>– <em>Freely-evolving bulk temperature.</em> In this case, the user must supply the
-code with the desired values of <span class="math notranslate nohighlight">\(M_B^w\)</span> and
-<span class="math notranslate nohighlight">\(Re_\tau\)</span> only, while <span class="math notranslate nohighlight">\(\theta\)</span> must be set to
-a value less than <span class="math notranslate nohighlight">\(-1\)</span>.
-The code provides the value of <span class="math notranslate nohighlight">\(Re_B^w\)</span>, and
-an estimate of <span class="math notranslate nohighlight">\(M_B\)</span> and <span class="math notranslate nohighlight">\(Re_B\)</span>. CITA ROUGHNESS JFM</p>
-<p>It is important to note that, since the reference temperature <span class="math notranslate nohighlight">\(T_R^*\)</span>
-is assumed to be equal to the wall temperature <span class="math notranslate nohighlight">\(T_w^*\)</span>,
-the dynamic viscosity at the reference temperature <span class="math notranslate nohighlight">\(\mu(T=1)\)</span> is <strong>not</strong> equal to one, but rather:</p>
+<p>The other reference quantities are derived as explained in the previous section.
+Note that, as a consequence of this coice,
+the nondimensional bulk velocity is <strong>not</strong> equal to one, but rather:</p>
 <div class="math notranslate nohighlight">
-\[\mu(T=1) = \frac{\mu^*(T^*=T_w^*)}{\mu_R^*} = \frac{\mu^*(T ^*=T_w^*)}{\rho_B^* U_B^* h^*} \frac{\rho_B^* U_B^* h^*}{\rho_R^* U_R^* L_R^*} = \sqrt{\gamma(T=1)} \frac{M_B^w}{Re_B^w}\,.\]</div>
-<p>where <span class="math notranslate nohighlight">\(\gamma(T=1)\)</span> is the heat capacity ratio at the reference temperature.
-Similarly, the nondimensional bulk velocity is <strong>not</strong> equal to one, but rather:</p>
+\[U_B = \frac{U_B^*}{U^*_R} = \frac{U_B^*}{\sqrt{R^* T_w^*}} = \sqrt{\gamma} M_B^w \,.\]</div>
+<p>Furthermore, the non dimensional viscosity at the reference temperature is:</p>
 <div class="math notranslate nohighlight">
-\[U_B = \frac{U_B^*}{U^*_R} = \frac{U_B^*}{\sqrt{R^* T_w^*}} = \sqrt{\gamma(T=1)} M_B^w\,.\]</div>
+\[\mu(T=1) = \frac{\mu^*(T_w^*)}{\rho_B^* h^* \sqrt{R^* T_w^*}} \frac{U_B^*}{U_B^*} = \frac{\sqrt{\gamma} M_B^w}{Re_B^w}\,.\]</div>
+<p>Simulations of the compressible plane channel flow are carried out imposing a constant flow rate,
+implying that both the bulk density and velocity are constant in time.
+Furthermore, the wall temperature is constant during the simulation.</p>
+<p>For what concerns the bulk temperature, STREAmS can run channel flow simulations according to two possible options:</p>
+<p>– <em>Freely-evolving bulk temperature.</em> This <em>classic</em> setup, see
+Ref [] and Ref [], corresponds to the case of a channel where the bulk temperature
+continuously increases up to the achievement of balance between aerodynamic heating and wall heat transfer.
+In this case, the user must supply the code with the desired values of <span class="math notranslate nohighlight">\(M_B^w\)</span> and
+<span class="math notranslate nohighlight">\(Re_\tau\)</span> (see input preparation section).</p>
+<p>– <em>Fixed bulk temperature.</em> In this case, see Ref ,
+the bulk temperature is kept constant in time thanks to the use of a bulk cooling term.
+The user must supply the code
+with the desired values of <span class="math notranslate nohighlight">\(M_B\)</span>, <span class="math notranslate nohighlight">\(Re_\tau\)</span>, and
+<span class="math notranslate nohighlight">\(\Theta\)</span> in the input file.</p>
 </div>
 <div class="section" id="compressible-boundary-layer">
 <h2>Compressible boundary layer<a class="headerlink" href="#compressible-boundary-layer" title="Permalink to this headline">¶</a></h2>

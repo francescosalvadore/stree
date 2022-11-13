@@ -2,6 +2,8 @@
 Setting input file
 ===================================
 
+.. _inputfile:
+
 Here we provide an explanation of the various input parameters that can be edited for a typical STREAmS run.
 All the parameters are reported in a single file, named `singleideal.ini`, organized in different sections and using
 the classical .ini format. Some ready-to-use input examples are provided in the folder examples.

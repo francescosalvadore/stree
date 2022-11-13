@@ -103,11 +103,11 @@ dimensional variables.
 
 We start by assuming four *"primary"* reference values, namely the specific gas constant :math:`R^*`,
 a reference density :math:`\rho_R^*`, temperature :math:`T_R^*` and length :math:`L_R^*`.
-Consequenly, density, temperature, and lengths are made nondimensional as:
+Consequenly, the gas costant, density, temperature, and lengths are made nondimensional as:
 
 .. math::
 
-   \rho = \frac{\rho^*}{\rho^*_R}, \quad T = \frac{T^*}{T^*_R}, \quad x_i = \frac{x^*_i}{L_R^*}
+   R = \frac{R^*}{R^*} = 1, \quad \rho = \frac{\rho^*}{\rho^*_R}, \quad T = \frac{T^*}{T^*_R}, \quad x_i = \frac{x^*_i}{L_R^*}
 
 From the reference values chosen above, it follows that:
 
@@ -157,7 +157,7 @@ it is possible to obtain the following nondimensional form:
 
 .. math::
 
-   p = \rho T
+   p = \rho \, R \, T
 
 where
 
@@ -185,13 +185,14 @@ The nondimensional form of the viscosity-temperature relationship becomes
 
    \mu = \frac{\mu^*}{\mu^*_R} = \frac{\mu^*(T^* = T_R^*)}{\mu^*_R} f \left(\frac{T^*}{T^*_R}\right) = \mu(T=1) f(T)\,.
 
-We stress that the reference dynamic viscosity :math:`\mu_R^*` does **not** coincide with 
-the dynamic viscosity at the reference temperature :math:`\mu^*(T^* = T_R^*)`. Their ratio
+We stress that the dynamic viscosity at the reference temperature :math:`\mu^*(T^* = T_R^*)` does **not** coincide with 
+the reference dynamic viscosity :math:`\mu_R^*`. Their ratio,
+i.e. the nondimensional viscosity :math:`\mu` at :math:`T = 1`,
 is a function of the nondimensional flow parameters provided by the user in the input file 
 (Mach number, Reynolds number, Eckert number), whose specific meaning for the various flow cases
 implemented in STREAmS is presented below.
 
-A description of the specific setup adopted for the various flow cases available is reported in the following.
+A description of the specific setup adopted for the various flow cases is reported in the following.
 
 -------------------------------------
 Compressible plane channel flow
@@ -200,9 +201,7 @@ Compressible plane channel flow
 .. image:: ./figures/Channel_case.png
    :width: 600
 
-Simulations of the compressible plane channel flow 
-are carried out imposing a constant flow rate. 
-The height of the domain :math:`L_y` is equal to :math:`2\,h^*`, 
+The height of the computational domain is equal to :math:`2\,h^*`, 
 where :math:`h^*` thus indicates the half-height of the channel. 
 
 *Bulk quantites* are indicated with :math:`B` subscript and are defined as: 
@@ -254,7 +253,7 @@ Relevant *nondimensional parameters* for the compressible channel flow case are:
 
    M^w_B = \frac{U^*_B}{\sqrt{\gamma\,R^*\,T^*_w}}
 
-- nondimensional wall temperature (???wall?, :math:`T_b` in other sections???)
+- nondimensional temperature
 
 .. math::
    \Theta = \frac{T^*_w - T^*_B}{T^*_r - T^*_B}
@@ -264,58 +263,62 @@ where :math:`u^*_\tau` is the friction velocity,
 :math:`\mu^*(T^*)` is the dynamic viscosity at temperature :math:`T^*`, 
 :math:`T^*_w` is the wall temperature, 
 :math:`\gamma = C^*_p/C^*_v` is the heat capacity ratio, 
-obtained dividing the specific heat capacity at constant pressure :math:`C^*_p`
-by the specific heat capacity at constant volume :math:`C^*_v`, 
-and :math:`T_r` is the recovery temperature.
+and :math:`T^*_r` is the recovery temperature, defined as
 
-For channel flow computations, the *primary reference quantities*, besides the specific gas constant :math:`:R^*`,
-are:
+.. math::
+   T^*_r = T_B^* \, (1 + \frac{\gamma-1}{2}\, r\, M^2_B)
 
-- reference length
+:math:`r = Pr^{1/3}` being the recovery factor.
+
+For channel flow computations, besides the specific gas constant :math:`R^*`,
+the *primary reference quantities* are:
+
+- reference length: half-channel height
 .. math::
 
    L^*_R = h^*
 
-- reference density
+- reference density: bulk density
 .. math::
 
    \rho^*_R = \rho^*_B
--
-- reference temperature
+
+- reference temperature: wall temperature
 .. math::
 
    T^*_R = T^*_w\,.
 
-For what concerns the bulk temperature, STREAmS can run channel flow simulations 
-according to two possible options: 
-
--- *Fixed bulk temperature.* In this case, the user must supply the code 
-with the desired values of :math:`M_B`, :math:`Re_\tau`, and an 
-estimate of :math:`\theta` in the input file. 
-The code provides the corresponding values of :math:`M_B^w`, 
-:math:`Re_B^w`, and :math:`Re_B`. CITA COLEMANN e MODESTI 
-
--- *Freely-evolving bulk temperature.* In this case, the user must supply the 
-code with the desired values of :math:`M_B^w` and 
-:math:`Re_\tau` only, while :math:`\theta` must be set to 
-a value less than :math:`-1`. 
-The code provides the value of :math:`Re_B^w`, and 
-an estimate of :math:`M_B` and :math:`Re_B`. CITA ROUGHNESS JFM
-
-It is important to note that, since the reference temperature :math:`T_R^*` 
-is assumed to be equal to the wall temperature :math:`T_w^*`, 
-the dynamic viscosity at the reference temperature :math:`\mu(T=1)` is **not** equal to one, but rather:
-
-.. math::
-
-   \mu(T=1) = \frac{\mu^*(T^*=T_w^*)}{\mu_R^*} = \frac{\mu^*(T ^*=T_w^*)}{\rho_B^* U_B^* h^*} \frac{\rho_B^* U_B^* h^*}{\rho_R^* U_R^* L_R^*} = \sqrt{\gamma(T=1)} \frac{M_B^w}{Re_B^w}\,.
-
-where :math:`\gamma(T=1)` is the heat capacity ratio at the reference temperature.
-Similarly, the nondimensional bulk velocity is **not** equal to one, but rather: 
+The other reference quantities are derived as explained in the previous section.
+Note that, as a consequence of this coice, 
+the nondimensional bulk velocity is **not** equal to one, but rather: 
 
 .. math::
    
-  U_B = \frac{U_B^*}{U^*_R} = \frac{U_B^*}{\sqrt{R^* T_w^*}} = \sqrt{\gamma(T=1)} M_B^w\,.
+  U_B = \frac{U_B^*}{U^*_R} = \frac{U_B^*}{\sqrt{R^* T_w^*}} = \sqrt{\gamma} M_B^w \,.
+
+Furthermore, the non dimensional viscosity at the reference temperature is:
+
+.. math::
+
+   \mu(T=1) = \frac{\mu^*(T_w^*)}{\rho_B^* h^* \sqrt{R^* T_w^*}} \frac{U_B^*}{U_B^*} = \frac{\sqrt{\gamma} M_B^w}{Re_B^w}\,.
+
+Simulations of the compressible plane channel flow are carried out imposing a constant flow rate,
+implying that both the bulk density and velocity are constant in time.
+Furthermore, the wall temperature is constant during the simulation.
+
+For what concerns the bulk temperature, STREAmS can run channel flow simulations according to two possible options: 
+
+-- *Freely-evolving bulk temperature.* This *classic* setup, see 
+Ref [] and Ref [], corresponds to the case of a channel where the bulk temperature
+continuously increases up to the achievement of balance between aerodynamic heating and wall heat transfer.
+In this case, the user must supply the code with the desired values of :math:`M_B^w` and
+:math:`Re_\tau` (see input preparation section).
+
+-- *Fixed bulk temperature.* In this case, see Ref , 
+the bulk temperature is kept constant in time thanks to the use of a bulk cooling term.
+The user must supply the code 
+with the desired values of :math:`M_B`, :math:`Re_\tau`, and
+:math:`\Theta` in the input file. 
 
 -------------------------------------
 Compressible boundary layer

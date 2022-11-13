@@ -19,8 +19,10 @@ Welcome to STREAmS-2 documentation!
    manual/input
    manual/output
    manual/postprocessing
-   manual/convert
    manual/gallery
+
+   manual/convert
+   manual/public
 
 .. :caption: Contents:
 
