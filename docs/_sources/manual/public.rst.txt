@@ -62,6 +62,12 @@ How to prepare code for public repository
    cp -r streams_2/examples/supersonic_channel work_public/examples
    cp -r streams_2/examples/supersonic_boundary_layer work_public/examples
 
+- Remove .gitignore which prevents pushing cpu and amd code from src folder
+
+.. code-block:: console
+
+   rm streams_2/code/src/.gitignore
+
 - Scrupoluously review content of ``work_public`` folder
 
 - Copy content of work_public to public repo folder

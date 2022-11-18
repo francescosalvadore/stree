@@ -86,14 +86,17 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="quick-start.html">Compiling and running</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flow_cases.html">STREAmS flow cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="equations.html">STREAmS equations and flow cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">Setting input file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output.html">Understading output files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Post-processing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery of STREAmS results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="equations.html">STREAmS equations and flow cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convert.html">Converting STREAmS for different purposes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to prepare code for public repository</a></li>
 </ul>
@@ -222,6 +225,12 @@ a subfolder work_public and clone private and public streams_2 repositories</p><
 <span class="go">cp -r streams_2/examples/subsonic_channel work_public/examples</span>
 <span class="go">cp -r streams_2/examples/supersonic_channel work_public/examples</span>
 <span class="go">cp -r streams_2/examples/supersonic_boundary_layer work_public/examples</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Remove .gitignore which prevents pushing cpu and amd code from src folder</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rm streams_2/code/src/.gitignore</span>
 </pre></div>
 </div>
 <ul class="simple">

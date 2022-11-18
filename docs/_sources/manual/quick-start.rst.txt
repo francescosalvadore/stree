@@ -6,7 +6,7 @@ Compiling and running
 Compilation
 -------------------------------------
 
-To compile you need at least a Fortran and a C compiler alongside a working installation Message Passing Interface (MPI) library.
+To compile STREAmS, you need at least a Fortran and a C compiler alongside a working installation of the Message Passing Interface (MPI) library.
 
 In order to compile, first go to ``code`` folder and search for a configuration file in the make-templates folder. The most basic CPU configuration
 is ``makefile.inc.linux64_gnu``.  Copy the template file to ``makefile.inc``.
@@ -16,11 +16,11 @@ is ``makefile.inc.linux64_gnu``.  Copy the template file to ``makefile.inc``.
    cd code
    cp make-templates/makefile.inc.linux64_gnu makefile.inc
 
-A more complex configuration for NVIDIA GPUs on Marconi100 cluster at Cineca is ``makefile.inc.m100_cuda``.
+A more complex configuration for NVIDIA GPUs on Marconi100 cluster at CINECA is ``makefile.inc.m100_cuda``.
 
 In general, the configuration file contains 7 parameters:
 
-- `EQUATION`: solved equation: currently only `singleideal` (single-specie Navier-Stokes) is supported
+- `EQUATION`: solved equation: currently only `singleideal` (single-species Navier-Stokes) is supported
 - `BACKEND`: computing backend: `gpu` (CUDA Fortran for NVIDIA GPUs) or `cpu` (traditional CPU) are supported
 - `COMPILE`: compiler: `nv-cuda` (NVIDIA CUDA), `nv` (NVIDIA CPU), `intel` (Intel), `gnu` (GNU), `ibmxl` (IBM XL), `cray-cuda` (Cray CUDA)
 - `MODE`: compilation mode: `opt` (optimized, default) or `debug` (debug options enabled)
@@ -28,9 +28,9 @@ In general, the configuration file contains 7 parameters:
 - `CUDA_VER`: CUDA version (meaningful if CUDA is enabled): e.g., `11.0`
 - `MPI_CMD`: MPI wrapper command: this is an optional parameter to override the MPI wrapper command given by the chosen compiler
 
-An example configuration file is available as `makefile.inc.m100_cuda` and allows you to easily compile on Marconi100 cluster at CINECA. Once you have a configuration file for your machine, you can create a link to that file to use it:
+An example configuration file is available as `makefile.inc.m100_cuda` and allows you to easily compile the code on Marconi100 cluster at CINECA. Once you have a configuration file for your machine, you can create a link to that file to use it:
 
-Once the configuration file is ready it is possible to compile:
+Once the configuration file is ready, it is possible to compile:
 
 .. code-block:: bash
 
@@ -42,8 +42,8 @@ The executable `streams_2.exe` should be now in the ``code`` folder.
 Running
 -------------------------------------
 
-First prepare an input file for your equation. For `singleideal` equation the input file is `singleideal.ini`.
-Some examples of input files are provided in folder `examples`. For instance, copy the `subsonic_channel` case to
+First prepare an input file for your equation. For `singleideal` equation, the input file is `singleideal.ini`.
+Some examples of input files are provided in the folder `examples`. For instance, copy the `subsonic_channel` case to
 your run folder. 
 
 .. code-block:: bash
@@ -51,7 +51,7 @@ your run folder.
    mkdir RUN && cd RUN
    cp examples/subsonic_channel/singleideal.ini  .
 
-To understand how to write an input file please go to :ref:`input <inputfile>` section in the documentation.
+To understand how to write an input file please go to the :ref:`input <inputfile>` section in the documentation.
 
 To run the simulation you can use MPI launcher:
 
@@ -60,7 +60,7 @@ To run the simulation you can use MPI launcher:
    mpirun -np 4 ./streams_2.exe
 
 Depending on the configuration of your machine, you may need to use a queue system to launch the simulation.
-For instance, on Marconi100 at Cineca, a SLURM submission script to run using GPUs may be:
+For instance, on Marconi100 at CINECA, a SLURM submission script to run a simulation using GPUs may be:
 
 .. code-block:: bash
 

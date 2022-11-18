@@ -94,11 +94,14 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="flow_cases.html">STREAmS flow cases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="equations.html">STREAmS equations and flow cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">Setting input file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output.html">Understading output files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Post-processing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery of STREAmS results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="equations.html">STREAmS equations and flow cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convert.html">Converting STREAmS for different purposes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="public.html">How to prepare code for public repository</a></li>
 </ul>
@@ -172,17 +175,17 @@
 <h1>Compiling and running<a class="headerlink" href="#compiling-and-running" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="compilation">
 <h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
-<p>To compile you need at least a Fortran and a C compiler alongside a working installation Message Passing Interface (MPI) library.</p>
+<p>To compile STREAmS, you need at least a Fortran and a C compiler alongside a working installation of the Message Passing Interface (MPI) library.</p>
 <p>In order to compile, first go to <code class="docutils literal notranslate"><span class="pre">code</span></code> folder and search for a configuration file in the make-templates folder. The most basic CPU configuration
 is <code class="docutils literal notranslate"><span class="pre">makefile.inc.linux64_gnu</span></code>.  Copy the template file to <code class="docutils literal notranslate"><span class="pre">makefile.inc</span></code>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd code</span>
 <span class="go">cp make-templates/makefile.inc.linux64_gnu makefile.inc</span>
 </pre></div>
 </div>
-<p>A more complex configuration for NVIDIA GPUs on Marconi100 cluster at Cineca is <code class="docutils literal notranslate"><span class="pre">makefile.inc.m100_cuda</span></code>.</p>
+<p>A more complex configuration for NVIDIA GPUs on Marconi100 cluster at CINECA is <code class="docutils literal notranslate"><span class="pre">makefile.inc.m100_cuda</span></code>.</p>
 <p>In general, the configuration file contains 7 parameters:</p>
 <ul class="simple">
-<li><p><cite>EQUATION</cite>: solved equation: currently only <cite>singleideal</cite> (single-specie Navier-Stokes) is supported</p></li>
+<li><p><cite>EQUATION</cite>: solved equation: currently only <cite>singleideal</cite> (single-species Navier-Stokes) is supported</p></li>
 <li><p><cite>BACKEND</cite>: computing backend: <cite>gpu</cite> (CUDA Fortran for NVIDIA GPUs) or <cite>cpu</cite> (traditional CPU) are supported</p></li>
 <li><p><cite>COMPILE</cite>: compiler: <cite>nv-cuda</cite> (NVIDIA CUDA), <cite>nv</cite> (NVIDIA CPU), <cite>intel</cite> (Intel), <cite>gnu</cite> (GNU), <cite>ibmxl</cite> (IBM XL), <cite>cray-cuda</cite> (Cray CUDA)</p></li>
 <li><p><cite>MODE</cite>: compilation mode: <cite>opt</cite> (optimized, default) or <cite>debug</cite> (debug options enabled)</p></li>
@@ -190,8 +193,8 @@ is <code class="docutils literal notranslate"><span class="pre">makefile.inc.lin
 <li><p><cite>CUDA_VER</cite>: CUDA version (meaningful if CUDA is enabled): e.g., <cite>11.0</cite></p></li>
 <li><p><cite>MPI_CMD</cite>: MPI wrapper command: this is an optional parameter to override the MPI wrapper command given by the chosen compiler</p></li>
 </ul>
-<p>An example configuration file is available as <cite>makefile.inc.m100_cuda</cite> and allows you to easily compile on Marconi100 cluster at CINECA. Once you have a configuration file for your machine, you can create a link to that file to use it:</p>
-<p>Once the configuration file is ready it is possible to compile:</p>
+<p>An example configuration file is available as <cite>makefile.inc.m100_cuda</cite> and allows you to easily compile the code on Marconi100 cluster at CINECA. Once you have a configuration file for your machine, you can create a link to that file to use it:</p>
+<p>Once the configuration file is ready, it is possible to compile:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make
 </pre></div>
 </div>
@@ -199,20 +202,20 @@ is <code class="docutils literal notranslate"><span class="pre">makefile.inc.lin
 </div>
 <div class="section" id="running">
 <h2>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
-<p>First prepare an input file for your equation. For <cite>singleideal</cite> equation the input file is <cite>singleideal.ini</cite>.
-Some examples of input files are provided in folder <cite>examples</cite>. For instance, copy the <cite>subsonic_channel</cite> case to
+<p>First prepare an input file for your equation. For <cite>singleideal</cite> equation, the input file is <cite>singleideal.ini</cite>.
+Some examples of input files are provided in the folder <cite>examples</cite>. For instance, copy the <cite>subsonic_channel</cite> case to
 your run folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir RUN <span class="o">&amp;&amp;</span> <span class="nb">cd</span> RUN
 cp examples/subsonic_channel/singleideal.ini  .
 </pre></div>
 </div>
-<p>To understand how to write an input file please go to <a class="reference internal" href="input.html#inputfile"><span class="std std-ref">input</span></a> section in the documentation.</p>
+<p>To understand how to write an input file please go to the <a class="reference internal" href="input.html#inputfile"><span class="std std-ref">input</span></a> section in the documentation.</p>
 <p>To run the simulation you can use MPI launcher:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun -np <span class="m">4</span> ./streams_2.exe
 </pre></div>
 </div>
 <p>Depending on the configuration of your machine, you may need to use a queue system to launch the simulation.
-For instance, on Marconi100 at Cineca, a SLURM submission script to run using GPUs may be:</p>
+For instance, on Marconi100 at CINECA, a SLURM submission script to run a simulation using GPUs may be:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --partition=m100_usr_prod</span>
 <span class="c1">#SBATCH --time=24:00:00</span>

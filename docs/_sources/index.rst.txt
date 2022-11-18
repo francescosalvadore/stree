@@ -7,7 +7,7 @@
 Welcome to STREAmS-2 documentation!
 ----------------------------------------
 
-.. image:: _static/RenderView1_4023000.png
+.. image:: _static/RenderView1_4023000_black.png
    :width: 600
 
 ==================================
@@ -23,6 +23,7 @@ Basic documentation
    manual/output
    manual/postprocessing
    manual/gallery
+   manual/references
 
 ==================================
 Advanced documentation
