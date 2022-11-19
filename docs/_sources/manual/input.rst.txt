@@ -36,7 +36,7 @@ When the grid is directly generated in STREAmS, nodes in the x and z directions 
     - 5 => Shock wave boundary layer interaction type grid
 
 - ``dyptarget``     => real, active for ``grid_type = 3,4,5``, y spacing at the wall in wall-units
-- ``jbgrid``        => integer, active for ``grid_type = 3,4,5``, used to control transition from the inner and outer layer resolution , see Ref. [1] 
+- ``jbgrid``        => integer, active for ``grid_type = 3,4,5``, used to control transition from the inner and outer layer resolution 
   (suggested values: 16,24,32)
 - ``nywr``          => integer, active for ``grid_type = 4,5``, number of nodes in the well-resolved region between the wall (y=0) and y = ``lywr``
 - ``lywr``          => real, active for ``grid_type = 4,5``, size of the well-resolved region
@@ -45,7 +45,8 @@ Notes:
 
 
 A non-uniform distribution of nodes is needed in the wall-normal direction (y) for the simulation of wall-bounded flows.
-In this case, STREAmS adopts the "natural" grid stretching proposed in Ref [1], hereinafter denoted as `Pirozzoli mapping` function.
+In this case, STREAmS adopts the "natural" grid stretching proposed in :cite:p:`Pirozzoli2021`,
+hereinafter denoted as `Pirozzoli mapping` function.
 Depending on the particular flow case under investigation, the following strategies are followed:
 
 - channel flow => `Pirozzoli mapping` function applied to distribute nodes between the two walls (located at :math:`y = \pm 1`).
@@ -109,7 +110,7 @@ Concerning the characteristic treatment, the following options are available for
 
 - 0 ==> characteristic treatment is not applied
 - 1 ==> pure non-reflecting
-- 2 ==> relaxation, see Ref [2]
+- 2 ==> relaxation, see :cite:p:`Pirozzoli2013`
 - 6 ==> reflective wall
 
 &&&&&&&&&&&&&&&&&&&&&
@@ -125,7 +126,7 @@ This section allows the user to specify parameters to control time integration a
 
 Notes:
 
-When ``cfl > 0``, the Courant number is constant, and the time step is computed every ``iter_dt_recompute cycles``.
+When ``cfl > 0``, the Courant number is constant, and the time step is computed every ``iter_dt_recompute`` cycles.
 Alternatively, the time step of the simulation can be directly specified using a negative value of ``cfl``.
 In the latter case, the time step is equal to abs(``cfl``).
 
@@ -146,9 +147,9 @@ This section allows the user to specify parameters to control numerical methods.
 Notes:
 
 The discretization of the convective terms of the Navier-Stokes equations is based on the implementation of the family
-of kinetic energy and entropy preserving schemes KEEP(n), described in Ref [4].
+of kinetic energy and entropy preserving schemes KEEP(n), described in :cite:p:`Tamaki2022`.
 The available orders of accuracy for ``ep_order`` and ``visc_order`` are 2,4,6,8.
-The shock capturing flux is based on the classic WENO schemes by Ref [5]. Admissible values for ``weno_scheme`` are 1,2,3,4,
+The shock capturing flux is based on the classic WENO schemes by :cite:p:`Shu1996`. Admissible values for ``weno_scheme`` are 1,2,3,4,
 corresponding to first-, third-, fifth- and seventh-order schemes, respectively. 
 
 &&&&&&&&&&&&&&&&&&&&&
@@ -173,11 +174,14 @@ Notes:
 
 For the channel flow configuration, the input Reynolds number is the (estimated) friction Reynolds number :math:`Re_\tau`.
 Simulations are performed at constant flow rate. The bulk temperature :math:`T_b` can be specified providing a value for
-``theta_wall``, defined as :math:`\Theta = \frac{T_w - T_b}{T_r - T_b}`, where :math:`T_r` is the recovery temperature based on :math:`T_b` and the Mach number. 
-When :math:`\Theta \ge -1`, a bulk cooling term is added to the total energy equation to keep the bulk temperature constant, see Ref [???].
-For this type of simulation, ``Mach``  is the Mach number based on the bulk velocity and on the speed of sound evaluated at bulk temperature.
-Alternatively, when :math:`\Theta < -1`, the bulk temperature is not constant and is free to evolve. In this case, the setup is similar to that reported in Ref [???],
-with ``Mach``  based on the bulk velocity and on the speed of sound evaluated at wall temperature.
+``theta_wall``, defined as :math:`\Theta = \frac{T_w - T_b}{T_r - T_b}`, where :math:`T_r` is the recovery
+temperature based on :math:`T_b` and the Mach number. 
+When :math:`\Theta \ge -1`, a bulk cooling term is added to the total energy equation to keep the bulk temperature constant.
+For this type of simulation, ``Mach``  is the Mach number based on the bulk velocity and on the speed of sound evaluated at bulk temperature,
+see :cite:p:`Modesti2022`.
+Alternatively, when :math:`\Theta < -1`, the bulk temperature is not constant and is free to evolve.
+In this case, the setup is similar to that reported in :cite:p:`Modesti2016`,
+with ``Mach`` based on the bulk velocity and on the speed of sound evaluated at wall temperature.
 
 For boundary layer and SBLI configurations, the input Reynolds number is the friction Reynolds number at the inflow station :math:`Re_{\tau}`,
 whereas ``Mach`` is the free-stream Mach number. Moreover, in this case :math:`\Theta = \frac{T_w - T_{\infty}}{T_r - T_{\infty}}`,
@@ -206,7 +210,8 @@ This section allows the user to specify fluid properties.
 
 - ``indx_cp_l``, integer, exponent low limit of :math:`C_p (T)` polynomial
 - ``indx_cp_r``, integer, exponent high limit of :math:`C_p (T)` polynomial
-- ``cp_coeff``, real, list of coefficients for :math:`C_p (T)` polynomial (from lowest to highest power), see Ref [???]. If :math:`T^*` is the dimensional temperature, the dimensional specific heat at constant pressure is expressed as 
+- ``cp_coeff``, real, list of coefficients for :math:`C_p (T)` polynomial (from lowest to highest power), see :cite:p:`McBride2002`.
+  If :math:`T^*` is the dimensional temperature, the dimensional specific heat at constant pressure is expressed as 
 
 .. math::
 

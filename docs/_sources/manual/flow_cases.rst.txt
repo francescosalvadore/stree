@@ -16,7 +16,7 @@ Nondimensional governing equations
 STREAmS solves the fully compressible Navier–Stokes equations 
 for a calorically or thermally perfect, heat-conducting gas. 
 The governing equations in dimensional form, adopting
-the Einsten summation notation, are thus:
+the Einstein summation notation, are thus:
 
 .. math::
 
@@ -104,7 +104,7 @@ between its reference quantity :math:`g^*_R` and its non-dimensional value :math
 
    g^* = g^*_R \cdot g
 
-The specific choice of the reference quantites here assumed makes it possible to use non-dimensional variables,
+The specific choice of the reference quantities here assumed makes it possible to use non-dimensional variables,
 while retaining  the same form of the dimensional governing equations.
 
 We start by assuming a minimal set of four independent (*"primary"*) variables, namely the specific gas constant :math:`R^*`,
@@ -121,7 +121,7 @@ a reference density :math:`\rho_R^*`, temperature :math:`T_R^*` and length :math
      - :math:`T^*_R`
      - :math:`L^*_R`
 
-Consequenly, density, temperature, and lengths are made non-dimensional as:
+Consequently, density, temperature, and lengths are made non-dimensional as:
 
 .. math::
 
@@ -327,13 +327,13 @@ Furthermore, the **wall temperature is constant** during the simulation.
 For what concerns the bulk temperature, STREAmS can run channel flow simulations according to two possible options
 (see :ref:`input <inputfile>` section): 
 
--- *Freely-evolving bulk temperature.* This *classic* setup, see 
-Ref [] and Ref [], corresponds to the case of a channel where the bulk temperature
+-- *Freely-evolving bulk temperature.* This *classic* setup, see :cite:p:`Coleman1995` and :cite:p:`Modesti2016`,
+corresponds to the case of a channel where the bulk temperature
 continuously increases up to the achievement of balance between aerodynamic heating and wall heat transfer.
 In this case, the user must supply the code with the desired values of :math:`M_B^w` and an estimate of the friction Reynolds number
 :math:`Re_\tau` in the input file.
 
--- *Fixed bulk temperature.* In this case, see Ref [], 
+-- *Fixed bulk temperature.* In this case, see :cite:p:`Modesti2022`, 
 the bulk temperature is kept constant in time thanks to the use of a bulk cooling term added to the total energy equation.
 The user must supply the code with the desired values of :math:`M_B`, :math:`\Theta` and an estimate of the friction Reynolds number
 :math:`Re_\tau` in the input file.
@@ -374,11 +374,21 @@ Relevant *non-dimensional parameters* for the compressible boundary layer are:
 
    M_\infty = \frac{U_\infty^*}{\sqrt{\gamma_\infty\,R^*\,T_\infty^*}}
 
+- non-dimensional temperature
+
+.. math::
+   \Theta = \frac{T^*_w - T^*_{\infty}}{T^*_r - T^*_{\infty}}
+
+- Eckert number
+
+.. math::
+   Ec = \frac{(\gamma -1 ) \, M^2_\infty \, T^*_\infty}{T^*_r - T^*_w}
+
 where :math:`u_\tau^*` is the friction velocity, 
 :math:`\delta_0^*` is the boundary layer thickness (based on 99% of the free-stream velocity) at the inflow,
 :math:`\theta_0^*` is the boundary layer momentum thickness at the inflow, 
-:math:`\nu_w^*` and :math:`\mu_w` are the kinematic and dynamic viscosity at the wall respectively, 
-and the subscript :math:`\infty` indicates that quantities are referred to free-stream 
+:math:`\nu_w^*` and :math:`\mu^*_w` are the kinematic and dynamic viscosity at the wall respectively, 
+:math:`T^*_r` is the recovery temperature and the subscript :math:`\infty` indicates that quantities are referred to free-stream 
 conditions. 
 
 For boundary layer flow computations, the *primary reference quantities* are:
@@ -429,4 +439,3 @@ the two following parameters:
 - the *shock impingment location* :math:`x_{imp}^s`, which is the longitudinal coordinate where the impinging shock would intersect the bottom surface.
 
 - The *shock wave angle* :math:`\phi^s`, which is the acute angle between the shock and the top (or bottom) surface.
-

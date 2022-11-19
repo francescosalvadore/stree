@@ -30,7 +30,7 @@ Advanced documentation
 ==================================
 
 .. toctree::
-   :maxdepth:2
+   :maxdepth: 2
 
    manual/equations
    manual/convert

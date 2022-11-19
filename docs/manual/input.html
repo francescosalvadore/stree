@@ -213,14 +213,15 @@ When the grid is directly generated in STREAmS, nodes in the x and z directions 
 </div></blockquote>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dyptarget</span></code>     =&gt; real, active for <code class="docutils literal notranslate"><span class="pre">grid_type</span> <span class="pre">=</span> <span class="pre">3,4,5</span></code>, y spacing at the wall in wall-units</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">jbgrid</span></code>        =&gt; integer, active for <code class="docutils literal notranslate"><span class="pre">grid_type</span> <span class="pre">=</span> <span class="pre">3,4,5</span></code>, used to control transition from the inner and outer layer resolution , see Ref. [1]
+<li><p><code class="docutils literal notranslate"><span class="pre">jbgrid</span></code>        =&gt; integer, active for <code class="docutils literal notranslate"><span class="pre">grid_type</span> <span class="pre">=</span> <span class="pre">3,4,5</span></code>, used to control transition from the inner and outer layer resolution
 (suggested values: 16,24,32)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nywr</span></code>          =&gt; integer, active for <code class="docutils literal notranslate"><span class="pre">grid_type</span> <span class="pre">=</span> <span class="pre">4,5</span></code>, number of nodes in the well-resolved region between the wall (y=0) and y = <code class="docutils literal notranslate"><span class="pre">lywr</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">lywr</span></code>          =&gt; real, active for <code class="docutils literal notranslate"><span class="pre">grid_type</span> <span class="pre">=</span> <span class="pre">4,5</span></code>, size of the well-resolved region</p></li>
 </ul>
 <p>Notes:</p>
 <p>A non-uniform distribution of nodes is needed in the wall-normal direction (y) for the simulation of wall-bounded flows.
-In this case, STREAmS adopts the “natural” grid stretching proposed in Ref [1], hereinafter denoted as <cite>Pirozzoli mapping</cite> function.
+In this case, STREAmS adopts the “natural” grid stretching proposed in <span id="id1">[<a class="reference internal" href="references.html#id7" title="S. Pirozzoli and P. Orlandi. Natural grid stretching for DNS of wall-bounded flows. Journal of Computational Physics, 439:110408, August 2021. URL: https://doi.org/10.1016/j.jcp.2021.110408, doi:10.1016/j.jcp.2021.110408.">5</a>]</span>,
+hereinafter denoted as <cite>Pirozzoli mapping</cite> function.
 Depending on the particular flow case under investigation, the following strategies are followed:</p>
 <ul class="simple">
 <li><p>channel flow =&gt; <cite>Pirozzoli mapping</cite> function applied to distribute nodes between the two walls (located at <span class="math notranslate nohighlight">\(y = \pm 1\)</span>).
@@ -278,7 +279,7 @@ domain (from y = <code class="docutils literal notranslate"><span class="pre">ly
 <ul class="simple">
 <li><p>0 ==&gt; characteristic treatment is not applied</p></li>
 <li><p>1 ==&gt; pure non-reflecting</p></li>
-<li><p>2 ==&gt; relaxation, see Ref [2]</p></li>
+<li><p>2 ==&gt; relaxation, see <span id="id2">[<a class="reference internal" href="references.html#id8" title="S. Pirozzoli and T. Colonius. Generalized characteristic relaxation boundary conditions for unsteady compressible flow simulations. Journal of Computational Physics, 248:109–126, September 2013. URL: https://doi.org/10.1016/j.jcp.2013.04.021, doi:10.1016/j.jcp.2013.04.021.">4</a>]</span></p></li>
 <li><p>6 ==&gt; reflective wall</p></li>
 </ul>
 </div>
@@ -292,7 +293,7 @@ domain (from y = <code class="docutils literal notranslate"><span class="pre">ly
 <li><p><code class="docutils literal notranslate"><span class="pre">num_iter</span></code> =&gt; integer, number of RK steps</p></li>
 </ul>
 <p>Notes:</p>
-<p>When <code class="docutils literal notranslate"><span class="pre">cfl</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, the Courant number is constant, and the time step is computed every <code class="docutils literal notranslate"><span class="pre">iter_dt_recompute</span> <span class="pre">cycles</span></code>.
+<p>When <code class="docutils literal notranslate"><span class="pre">cfl</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, the Courant number is constant, and the time step is computed every <code class="docutils literal notranslate"><span class="pre">iter_dt_recompute</span></code> cycles.
 Alternatively, the time step of the simulation can be directly specified using a negative value of <code class="docutils literal notranslate"><span class="pre">cfl</span></code>.
 In the latter case, the time step is equal to abs(<code class="docutils literal notranslate"><span class="pre">cfl</span></code>).</p>
 </div>
@@ -310,9 +311,9 @@ In the latter case, the time step is equal to abs(<code class="docutils literal 
 </ul>
 <p>Notes:</p>
 <p>The discretization of the convective terms of the Navier-Stokes equations is based on the implementation of the family
-of kinetic energy and entropy preserving schemes KEEP(n), described in Ref [4].
+of kinetic energy and entropy preserving schemes KEEP(n), described in <span id="id3">[<a class="reference internal" href="references.html#id9" title="Y. Tamaki, Y. Kuya, and S. Kawai. Comprehensive analysis of entropy conservation property of non-dissipative schemes for compressible flows: KEEP scheme redefined. Journal of Computational Physics, 468:111494, November 2022. URL: https://doi.org/10.1016/j.jcp.2022.111494, doi:10.1016/j.jcp.2022.111494.">6</a>]</span>.
 The available orders of accuracy for <code class="docutils literal notranslate"><span class="pre">ep_order</span></code> and <code class="docutils literal notranslate"><span class="pre">visc_order</span></code> are 2,4,6,8.
-The shock capturing flux is based on the classic WENO schemes by Ref [5]. Admissible values for <code class="docutils literal notranslate"><span class="pre">weno_scheme</span></code> are 1,2,3,4,
+The shock capturing flux is based on the classic WENO schemes by <span id="id4">[]</span>. Admissible values for <code class="docutils literal notranslate"><span class="pre">weno_scheme</span></code> are 1,2,3,4,
 corresponding to first-, third-, fifth- and seventh-order schemes, respectively.</p>
 </div>
 <div class="section" id="flow">
@@ -337,11 +338,14 @@ corresponding to first-, third-, fifth- and seventh-order schemes, respectively.
 <p>Notes:</p>
 <p>For the channel flow configuration, the input Reynolds number is the (estimated) friction Reynolds number <span class="math notranslate nohighlight">\(Re_\tau\)</span>.
 Simulations are performed at constant flow rate. The bulk temperature <span class="math notranslate nohighlight">\(T_b\)</span> can be specified providing a value for
-<code class="docutils literal notranslate"><span class="pre">theta_wall</span></code>, defined as <span class="math notranslate nohighlight">\(\Theta = \frac{T_w - T_b}{T_r - T_b}\)</span>, where <span class="math notranslate nohighlight">\(T_r\)</span> is the recovery temperature based on <span class="math notranslate nohighlight">\(T_b\)</span> and the Mach number.
-When <span class="math notranslate nohighlight">\(\Theta \ge -1\)</span>, a bulk cooling term is added to the total energy equation to keep the bulk temperature constant, see Ref [???].
-For this type of simulation, <code class="docutils literal notranslate"><span class="pre">Mach</span></code>  is the Mach number based on the bulk velocity and on the speed of sound evaluated at bulk temperature.
-Alternatively, when <span class="math notranslate nohighlight">\(\Theta &lt; -1\)</span>, the bulk temperature is not constant and is free to evolve. In this case, the setup is similar to that reported in Ref [???],
-with <code class="docutils literal notranslate"><span class="pre">Mach</span></code>  based on the bulk velocity and on the speed of sound evaluated at wall temperature.</p>
+<code class="docutils literal notranslate"><span class="pre">theta_wall</span></code>, defined as <span class="math notranslate nohighlight">\(\Theta = \frac{T_w - T_b}{T_r - T_b}\)</span>, where <span class="math notranslate nohighlight">\(T_r\)</span> is the recovery
+temperature based on <span class="math notranslate nohighlight">\(T_b\)</span> and the Mach number.
+When <span class="math notranslate nohighlight">\(\Theta \ge -1\)</span>, a bulk cooling term is added to the total energy equation to keep the bulk temperature constant.
+For this type of simulation, <code class="docutils literal notranslate"><span class="pre">Mach</span></code>  is the Mach number based on the bulk velocity and on the speed of sound evaluated at bulk temperature,
+see <span id="id5">[<a class="reference internal" href="references.html#id4" title="D. Modesti, S. Sathyanarayana, F. Salvadore, and M. Bernardini. Direct numerical simulation of supersonic turbulent flows over rough surfaces. Journal of Fluid Mechanics, May 2022. URL: https://doi.org/10.1017/jfm.2022.393, doi:10.1017/jfm.2022.393.">3</a>]</span>.
+Alternatively, when <span class="math notranslate nohighlight">\(\Theta &lt; -1\)</span>, the bulk temperature is not constant and is free to evolve.
+In this case, the setup is similar to that reported in <span id="id6">[<a class="reference internal" href="references.html#id5" title="D. Modesti and S. Pirozzoli. Reynolds and Mach number effects in compressible turbulent channel flow. International Journal of Heat and Fluid Flow, 59:33–49, June 2016. URL: https://doi.org/10.1016/j.ijheatfluidflow.2016.01.007, doi:10.1016/j.ijheatfluidflow.2016.01.007.">2</a>]</span>,
+with <code class="docutils literal notranslate"><span class="pre">Mach</span></code> based on the bulk velocity and on the speed of sound evaluated at wall temperature.</p>
 <p>For boundary layer and SBLI configurations, the input Reynolds number is the friction Reynolds number at the inflow station <span class="math notranslate nohighlight">\(Re_{\tau}\)</span>,
 whereas <code class="docutils literal notranslate"><span class="pre">Mach</span></code> is the free-stream Mach number. Moreover, in this case <span class="math notranslate nohighlight">\(\Theta = \frac{T_w - T_{\infty}}{T_r - T_{\infty}}\)</span>,
 where <span class="math notranslate nohighlight">\(T_r\)</span> is the recovery temperature based on the free-stream temperature <span class="math notranslate nohighlight">\(T_{\infty}\)</span> and Mach number.</p>
@@ -373,7 +377,8 @@ where <span class="math notranslate nohighlight">\(T_r\)</span> is the recovery 
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">indx_cp_l</span></code>, integer, exponent low limit of <span class="math notranslate nohighlight">\(C_p (T)\)</span> polynomial</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">indx_cp_r</span></code>, integer, exponent high limit of <span class="math notranslate nohighlight">\(C_p (T)\)</span> polynomial</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cp_coeff</span></code>, real, list of coefficients for <span class="math notranslate nohighlight">\(C_p (T)\)</span> polynomial (from lowest to highest power), see Ref [???]. If <span class="math notranslate nohighlight">\(T^*\)</span> is the dimensional temperature, the dimensional specific heat at constant pressure is expressed as</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cp_coeff</span></code>, real, list of coefficients for <span class="math notranslate nohighlight">\(C_p (T)\)</span> polynomial (from lowest to highest power), see <span id="id7">[]</span>.
+If <span class="math notranslate nohighlight">\(T^*\)</span> is the dimensional temperature, the dimensional specific heat at constant pressure is expressed as</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[C_p^* = \textnormal{cp_coeff}(0) + \sum_{i = \textnormal{indx_cp_l}}^\textnormal{indx_cp_r} \textnormal{cp_coeff}(i) \cdot \left({T^*}\right)^i\]</div>

@@ -188,7 +188,7 @@ types of canonical compressible flow configurations:</p>
 <p>STREAmS solves the fully compressible Navier–Stokes equations
 for a calorically or thermally perfect, heat-conducting gas.
 The governing equations in dimensional form, adopting
-the Einsten summation notation, are thus:</p>
+the Einstein summation notation, are thus:</p>
 <div class="math notranslate nohighlight">
 \[\frac{\partial \rho^*}{\partial t^*} + \frac{\partial \rho^* u_i^*}{\partial x_i^*}  = 0\]</div>
 <div class="math notranslate nohighlight">
@@ -246,12 +246,12 @@ we define some reference quantities and write each dimensional quantity <span cl
 between its reference quantity <span class="math notranslate nohighlight">\(g^*_R\)</span> and its non-dimensional value <span class="math notranslate nohighlight">\(g\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[g^* = g^*_R \cdot g\]</div>
-<p>The specific choice of the reference quantites here assumed makes it possible to use non-dimensional variables,
+<p>The specific choice of the reference quantities here assumed makes it possible to use non-dimensional variables,
 while retaining  the same form of the dimensional governing equations.</p>
 <p>We start by assuming a minimal set of four independent (<em>“primary”</em>) variables, namely the specific gas constant <span class="math notranslate nohighlight">\(R^*\)</span>,
 a reference density <span class="math notranslate nohighlight">\(\rho_R^*\)</span>, temperature <span class="math notranslate nohighlight">\(T_R^*\)</span> and length <span class="math notranslate nohighlight">\(L_R^*\)</span>:</p>
-<table class="colwidths-given docutils align-center" id="id1" style="width: 400">
-<caption><span class="caption-text">Independent reference quantities for non-dimensionalization</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-center" id="id4" style="width: 400">
+<caption><span class="caption-text">Independent reference quantities for non-dimensionalization</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -266,7 +266,7 @@ a reference density <span class="math notranslate nohighlight">\(\rho_R^*\)</spa
 </tr>
 </tbody>
 </table>
-<p>Consequenly, density, temperature, and lengths are made non-dimensional as:</p>
+<p>Consequently, density, temperature, and lengths are made non-dimensional as:</p>
 <div class="math notranslate nohighlight">
 \[\rho = \frac{\rho^*}{\rho^*_R}, \quad T = \frac{T^*}{T^*_R}, \quad x_i = \frac{x^*_i}{L_R^*}\]</div>
 <p>and also:</p>
@@ -274,8 +274,8 @@ a reference density <span class="math notranslate nohighlight">\(\rho_R^*\)</spa
 \[R = \frac{R^*}{R^*} = 1, \quad C_p = \frac{C_p^*}{R^*} \quad \mathrm{and} \quad C_v = \frac{C_v^*}{R^*}\,.\]</div>
 <p>In order to obtain non-dimensional governing equations formally equal to their dimensional counterpart, reference quantities
 for all the other variables are derived from the minimal set as follows:</p>
-<table class="docutils align-center" id="id2">
-<caption><span class="caption-text">Derived reference quantities for non-dimensionalization</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id5">
+<caption><span class="caption-text">Derived reference quantities for non-dimensionalization</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -405,8 +405,8 @@ and <span class="math notranslate nohighlight">\(T^*_r\)</span> is the recovery 
 \[T^*_r = T_B^* \, \left(1 + \frac{\gamma-1}{2}\, r\, M^2_B \right)\]</div>
 <p><span class="math notranslate nohighlight">\(r = Pr^{1/3}\)</span> being the recovery factor.</p>
 <p>For channel flow computations, the <em>primary reference quantities</em> are:</p>
-<table class="docutils align-center" id="id3">
-<caption><span class="caption-text">Primary reference quantities for channel flow case</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id6">
+<caption><span class="caption-text">Primary reference quantities for channel flow case</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -440,12 +440,12 @@ implying that both the <strong>bulk density and velocity are constant in time</s
 Furthermore, the <strong>wall temperature is constant</strong> during the simulation.</p>
 <p>For what concerns the bulk temperature, STREAmS can run channel flow simulations according to two possible options
 (see <a class="reference internal" href="input.html#inputfile"><span class="std std-ref">input</span></a> section):</p>
-<p>– <em>Freely-evolving bulk temperature.</em> This <em>classic</em> setup, see
-Ref [] and Ref [], corresponds to the case of a channel where the bulk temperature
+<p>– <em>Freely-evolving bulk temperature.</em> This <em>classic</em> setup, see <span id="id1">[<a class="reference internal" href="references.html#id6" title="G. N. Coleman, J. Kim, and R. D. Moser. A numerical study of turbulent supersonic isothermal-wall channel flow. Journal of Fluid Mechanics, 305:159–183, December 1995. URL: https://doi.org/10.1017/s0022112095004587, doi:10.1017/s0022112095004587.">1</a>]</span> and <span id="id2">[<a class="reference internal" href="references.html#id5" title="D. Modesti and S. Pirozzoli. Reynolds and Mach number effects in compressible turbulent channel flow. International Journal of Heat and Fluid Flow, 59:33–49, June 2016. URL: https://doi.org/10.1016/j.ijheatfluidflow.2016.01.007, doi:10.1016/j.ijheatfluidflow.2016.01.007.">2</a>]</span>,
+corresponds to the case of a channel where the bulk temperature
 continuously increases up to the achievement of balance between aerodynamic heating and wall heat transfer.
 In this case, the user must supply the code with the desired values of <span class="math notranslate nohighlight">\(M_B^w\)</span> and an estimate of the friction Reynolds number
 <span class="math notranslate nohighlight">\(Re_\tau\)</span> in the input file.</p>
-<p>– <em>Fixed bulk temperature.</em> In this case, see Ref [],
+<p>– <em>Fixed bulk temperature.</em> In this case, see <span id="id3">[<a class="reference internal" href="references.html#id4" title="D. Modesti, S. Sathyanarayana, F. Salvadore, and M. Bernardini. Direct numerical simulation of supersonic turbulent flows over rough surfaces. Journal of Fluid Mechanics, May 2022. URL: https://doi.org/10.1017/jfm.2022.393, doi:10.1017/jfm.2022.393.">3</a>]</span>,
 the bulk temperature is kept constant in time thanks to the use of a bulk cooling term added to the total energy equation.
 The user must supply the code with the desired values of <span class="math notranslate nohighlight">\(M_B\)</span>, <span class="math notranslate nohighlight">\(\Theta\)</span> and an estimate of the friction Reynolds number
 <span class="math notranslate nohighlight">\(Re_\tau\)</span> in the input file.</p>
@@ -480,15 +480,25 @@ The user must supply the code with the desired values of <span class="math notra
 </ul>
 <div class="math notranslate nohighlight">
 \[M_\infty = \frac{U_\infty^*}{\sqrt{\gamma_\infty\,R^*\,T_\infty^*}}\]</div>
+<ul class="simple">
+<li><p>non-dimensional temperature</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Theta = \frac{T^*_w - T^*_{\infty}}{T^*_r - T^*_{\infty}}\]</div>
+<ul class="simple">
+<li><p>Eckert number</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[Ec = \frac{(\gamma -1 ) \, M^2_\infty \, T^*_\infty}{T^*_r - T^*_w}\]</div>
 <p>where <span class="math notranslate nohighlight">\(u_\tau^*\)</span> is the friction velocity,
 <span class="math notranslate nohighlight">\(\delta_0^*\)</span> is the boundary layer thickness (based on 99% of the free-stream velocity) at the inflow,
 <span class="math notranslate nohighlight">\(\theta_0^*\)</span> is the boundary layer momentum thickness at the inflow,
-<span class="math notranslate nohighlight">\(\nu_w^*\)</span> and <span class="math notranslate nohighlight">\(\mu_w\)</span> are the kinematic and dynamic viscosity at the wall respectively,
-and the subscript <span class="math notranslate nohighlight">\(\infty\)</span> indicates that quantities are referred to free-stream
+<span class="math notranslate nohighlight">\(\nu_w^*\)</span> and <span class="math notranslate nohighlight">\(\mu^*_w\)</span> are the kinematic and dynamic viscosity at the wall respectively,
+<span class="math notranslate nohighlight">\(T^*_r\)</span> is the recovery temperature and the subscript <span class="math notranslate nohighlight">\(\infty\)</span> indicates that quantities are referred to free-stream
 conditions.</p>
 <p>For boundary layer flow computations, the <em>primary reference quantities</em> are:</p>
-<table class="docutils align-center" id="id4">
-<caption><span class="caption-text">Primary reference quantities for boundary layer flow case</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id7">
+<caption><span class="caption-text">Primary reference quantities for boundary layer flow case</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
